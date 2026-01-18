@@ -15,7 +15,8 @@ import {
   CheckCircle2,
   Loader2,
   FileImage,
-  ScanText
+  ScanText,
+  RotateCcw
 } from "lucide-react";
 
 const MAX_FILE_SIZE = 300 * 1024 * 1024; // 300MB in bytes
@@ -342,6 +343,16 @@ export default function Home() {
                     >
                       <Download className="h-4 w-4" />
                       Download
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={handleClear}
+                      className="gap-2"
+                      data-testid="button-reset"
+                    >
+                      <RotateCcw className="h-4 w-4" />
+                      Reset
                     </Button>
                   </div>
                 </div>
