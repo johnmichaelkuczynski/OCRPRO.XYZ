@@ -9,6 +9,7 @@ A web application that extracts text from scanned PDFs and images (PNG, JPG) usi
 - OCR text extraction using Azure Computer Vision Read API
 - Copy extracted text to clipboard
 - Download extracted text as .txt file
+- Reset button to clear results and start over
 - Dark/light mode toggle
 - Responsive design
 
