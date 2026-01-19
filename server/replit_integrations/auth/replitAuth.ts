@@ -74,9 +74,18 @@ export async function setupAuth(app: Express) {
     scope: ["profile", "email"],
   }));
 
+  app.get("/auth/google", passport.authenticate("google", {
+    scope: ["profile", "email"],
+  }));
+
   app.get("/api/callback", passport.authenticate("google", {
     successRedirect: "/",
     failureRedirect: "/api/login",
+  }));
+
+  app.get("/auth/google/callback", passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/auth/google",
   }));
 
   app.get("/api/logout", (req, res) => {
