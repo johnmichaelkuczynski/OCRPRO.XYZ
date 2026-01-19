@@ -39,6 +39,12 @@ export default function Home() {
   const { toast } = useToast();
   const { user, isLoading: authLoading, isAuthenticated } = useAuth();
 
+  // TXT Combiner state
+  const [txtFiles, setTxtFiles] = useState<File[]>([]);
+  const [combinedText, setCombinedText] = useState<string>("");
+  const [isCombining, setIsCombining] = useState(false);
+  const [txtCopied, setTxtCopied] = useState(false);
+
   const ocrMutation = useMutation({
     mutationFn: async (file: File) => {
       const formData = new FormData();
@@ -159,6 +165,76 @@ export default function Home() {
     if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
     return (bytes / (1024 * 1024)).toFixed(1) + " MB";
   };
+
+  // TXT Combiner functions
+  const handleTxtFilesChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    const txtFilesOnly = files.filter(f => f.name.endsWith('.txt'));
+    if (txtFilesOnly.length !== files.length) {
+      toast({
+        title: "Some files skipped",
+        description: "Only .txt files are accepted",
+        variant: "destructive",
+      });
+    }
+    setTxtFiles(txtFilesOnly);
+    setCombinedText("");
+  }, [toast]);
+
+  const handleCombineFiles = useCallback(async () => {
+    if (txtFiles.length === 0) return;
+    setIsCombining(true);
+    try {
+      const contents = await Promise.all(
+        txtFiles.map(file => file.text())
+      );
+      const combined = contents.join("\n\n--- Next File ---\n\n");
+      setCombinedText(combined);
+      toast({
+        title: "Files combined",
+        description: `Combined ${txtFiles.length} files`,
+      });
+    } catch {
+      toast({
+        title: "Error combining files",
+        description: "Failed to read one or more files",
+        variant: "destructive",
+      });
+    } finally {
+      setIsCombining(false);
+    }
+  }, [txtFiles, toast]);
+
+  const handleCopyTxt = useCallback(async () => {
+    await navigator.clipboard.writeText(combinedText);
+    setTxtCopied(true);
+    toast({
+      title: "Copied to clipboard",
+      description: "Combined text has been copied",
+    });
+    setTimeout(() => setTxtCopied(false), 2000);
+  }, [combinedText, toast]);
+
+  const handleDownloadTxt = useCallback(() => {
+    const blob = new Blob([combinedText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "combined-text.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast({
+      title: "Downloaded",
+      description: "Combined file has been downloaded",
+    });
+  }, [combinedText, toast]);
+
+  const handleClearTxt = useCallback(() => {
+    setTxtFiles([]);
+    setCombinedText("");
+  }, []);
 
   const getFileIcon = (type: string) => {
     if (type === "application/pdf") return <FileText className="h-5 w-5" />;
@@ -451,6 +527,149 @@ export default function Home() {
               </Card>
             </div>
           )}
+
+          {/* TXT Combiner Section */}
+          <div className="border-t pt-8 mt-8">
+            <div className="text-center space-y-3 mb-6">
+              <h2 className="text-2xl font-bold tracking-tight">
+                Combine TXT Files
+              </h2>
+              <p className="text-muted-foreground">
+                Select multiple .txt files to combine them into one
+              </p>
+            </div>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex flex-col items-center gap-4">
+                  <label
+                    htmlFor="txt-upload"
+                    className="flex flex-col items-center justify-center w-full p-8 rounded-md bg-muted/30 border-2 border-dashed border-muted-foreground/20 cursor-pointer hover-elevate"
+                    data-testid="dropzone-txt-upload"
+                  >
+                    <FileText className="h-10 w-10 text-muted-foreground mb-3" />
+                    <p className="text-lg font-medium">Select TXT Files</p>
+                    <p className="text-sm text-muted-foreground">Click to choose multiple .txt files</p>
+                    <input
+                      id="txt-upload"
+                      type="file"
+                      multiple
+                      accept=".txt"
+                      className="sr-only"
+                      onChange={handleTxtFilesChange}
+                      data-testid="input-txt-upload"
+                    />
+                  </label>
+
+                  {txtFiles.length > 0 && (
+                    <div className="w-full space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium">
+                          {txtFiles.length} file(s) selected
+                        </span>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={handleClearTxt}
+                          data-testid="button-clear-txt"
+                        >
+                          <X className="h-4 w-4 mr-1" />
+                          Clear
+                        </Button>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {txtFiles.map((f, i) => (
+                          <Badge key={i} variant="secondary">
+                            {f.name}
+                          </Badge>
+                        ))}
+                      </div>
+                      <Button
+                        onClick={handleCombineFiles}
+                        disabled={isCombining}
+                        className="w-full"
+                        data-testid="button-combine-files"
+                      >
+                        {isCombining ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Combining...
+                          </>
+                        ) : (
+                          "Combine Files"
+                        )}
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            {combinedText && (
+              <Card className="mt-4">
+                <CardContent className="p-0">
+                  <div className="flex items-center justify-between border-b p-4">
+                    <div className="flex items-center gap-2">
+                      <FileText className="h-5 w-5 text-muted-foreground" />
+                      <span className="font-medium">Combined Text</span>
+                      <Badge variant="secondary" className="text-xs">
+                        {combinedText.length.toLocaleString()} characters
+                      </Badge>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={handleCopyTxt}
+                        className="gap-2"
+                        data-testid="button-copy-combined"
+                      >
+                        {txtCopied ? (
+                          <>
+                            <CheckCircle2 className="h-4 w-4" />
+                            Copied
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="h-4 w-4" />
+                            Copy
+                          </>
+                        )}
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={handleDownloadTxt}
+                        className="gap-2"
+                        data-testid="button-download-combined"
+                      >
+                        <Download className="h-4 w-4" />
+                        Download
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={handleClearTxt}
+                        className="gap-2"
+                        data-testid="button-reset-combined"
+                      >
+                        <RotateCcw className="h-4 w-4" />
+                        Reset
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <div 
+                      className="min-h-[200px] max-h-[500px] overflow-auto rounded-md bg-muted/50 p-4 font-mono text-sm leading-relaxed whitespace-pre-wrap"
+                      data-testid="text-combined-content"
+                    >
+                      {combinedText}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         </div>
       </main>
 
