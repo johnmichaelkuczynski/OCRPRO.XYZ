@@ -33,12 +33,21 @@ export async function setupAuth(app: Express) {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  const clientID = process.env.GOOGLE_CLIENT_ID;
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
+  const callbackURL = process.env.GOOGLE_REDIRECT_URI;
+
+  if (!clientID || !clientSecret || !callbackURL) {
+    console.error("Google OAuth credentials missing:", { clientID: !!clientID, clientSecret: !!clientSecret, callbackURL: !!callbackURL });
+    return;
+  }
+
   passport.use(
     new GoogleStrategy(
       {
-        clientID: process.env.GOOGLE_CLIENT_ID!,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-        callbackURL: process.env.GOOGLE_REDIRECT_URI!,
+        clientID,
+        clientSecret,
+        callbackURL,
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
