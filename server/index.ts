@@ -1,7 +1,19 @@
 import express, { type Request, Response, NextFunction } from "express";
+import session from "express-session";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+
+declare module "express-session" {
+  interface SessionData {
+    user?: {
+      id: string;
+      email: string;
+      name?: string;
+      picture?: string;
+    };
+  }
+}
 
 const app = express();
 const httpServer = createServer(app);
@@ -11,6 +23,19 @@ declare module "http" {
     rawBody: unknown;
   }
 }
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "fallback-secret-key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    },
+  })
+);
 
 app.use(
   express.json({
