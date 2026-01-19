@@ -201,7 +201,7 @@ export async function registerRoutes(
 
     const authUrl = oauth2Client.generateAuthUrl({
       access_type: "offline",
-      scope: ["profile", "email"],
+      scope: ["openid", "profile", "email"],
     });
 
     res.redirect(authUrl);
@@ -223,8 +223,13 @@ export async function registerRoutes(
       const { tokens } = await oauth2Client.getToken(code);
       oauth2Client.setCredentials(tokens);
 
+      if (!tokens.id_token) {
+        console.error("No ID token received from Google");
+        return res.redirect("/?error=no_id_token");
+      }
+
       const ticket = await oauth2Client.verifyIdToken({
-        idToken: tokens.id_token!,
+        idToken: tokens.id_token,
         audience: GOOGLE_CLIENT_ID,
       });
 

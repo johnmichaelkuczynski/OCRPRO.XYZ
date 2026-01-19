@@ -1,9 +1,10 @@
 import { useState, useCallback } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useToast } from "@/hooks/use-toast";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { 
@@ -16,8 +17,10 @@ import {
   Loader2,
   FileImage,
   ScanText,
-  RotateCcw
+  RotateCcw,
+  LogOut
 } from "lucide-react";
+import { SiGoogle } from "react-icons/si";
 
 const MAX_FILE_SIZE = 300 * 1024 * 1024; // 300MB in bytes
 const ACCEPTED_TYPES = [
@@ -27,12 +30,38 @@ const ACCEPTED_TYPES = [
   "image/jpg"
 ];
 
+interface User {
+  id: string;
+  email: string;
+  name?: string;
+  picture?: string;
+}
+
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [extractedText, setExtractedText] = useState<string>("");
   const [isDragging, setIsDragging] = useState(false);
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+  const queryClient = useQueryClient();
+
+  const { data: userData } = useQuery<{ user: User | null }>({
+    queryKey: ["/api/user"],
+  });
+
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      const response = await fetch("/api/logout", { method: "POST" });
+      if (!response.ok) throw new Error("Failed to logout");
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["/api/user"] });
+      toast({ title: "Signed out successfully" });
+    },
+  });
+
+  const user = userData?.user;
 
   const ocrMutation = useMutation({
     mutationFn: async (file: File) => {
@@ -173,7 +202,45 @@ export default function Home() {
               <p className="text-xs text-muted-foreground">OCR Text Extraction</p>
             </div>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-3">
+            {user ? (
+              <>
+                <div className="flex items-center gap-2">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={user.picture} alt={user.name || user.email} />
+                    <AvatarFallback>{(user.name || user.email).charAt(0).toUpperCase()}</AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm font-medium hidden sm:inline" data-testid="text-user-name">
+                    {user.name || user.email}
+                  </span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => logoutMutation.mutate()}
+                  disabled={logoutMutation.isPending}
+                  data-testid="button-logout"
+                >
+                  <LogOut className="h-4 w-4" />
+                </Button>
+              </>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="gap-2"
+                data-testid="button-sign-in-google"
+              >
+                <a href="/auth/google">
+                  <SiGoogle className="h-4 w-4" />
+                  <span className="hidden sm:inline">Sign in with Google</span>
+                  <span className="sm:hidden">Sign in</span>
+                </a>
+              </Button>
+            )}
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
