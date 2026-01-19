@@ -25,5 +25,17 @@ export const users = pgTable("users", {
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+// Payments table to track user access
+export const payments = pgTable("payments", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull().references(() => users.id),
+  stripeSessionId: varchar("stripe_session_id").unique(),
+  stripeCustomerId: varchar("stripe_customer_id"),
+  paidAt: timestamp("paid_at").defaultNow(),
+  expiresAt: timestamp("expires_at").notNull(),
+});
+
 export type UpsertUser = typeof users.$inferInsert;
 export type User = typeof users.$inferSelect;
+export type Payment = typeof payments.$inferSelect;
+export type InsertPayment = typeof payments.$inferInsert;
