@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useState, useCallback, useEffect } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { queryClient } from "@/lib/queryClient";
 import { 
   Upload, 
   FileText, 
@@ -20,7 +21,9 @@ import {
   ScanText,
   RotateCcw,
   LogIn,
-  LogOut
+  LogOut,
+  CreditCard,
+  Clock
 } from "lucide-react";
 
 const MAX_FILE_SIZE = 300 * 1024 * 1024; // 300MB in bytes
@@ -38,6 +41,64 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
   const { user, isLoading: authLoading, isAuthenticated } = useAuth();
+
+  // Access status query
+  const { data: accessStatus, isLoading: accessLoading } = useQuery<{
+    hasAccess: boolean;
+    expiresAt: string | null;
+  }>({
+    queryKey: ["/api/access-status"],
+    enabled: isAuthenticated,
+  });
+
+  // Check for payment success/cancelled in URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("payment") === "success") {
+      toast({
+        title: "Payment successful!",
+        description: "You now have 1-day access to the OCR feature.",
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/access-status"] });
+      window.history.replaceState({}, "", window.location.pathname);
+    } else if (params.get("payment") === "cancelled") {
+      toast({
+        title: "Payment cancelled",
+        description: "Your payment was cancelled.",
+        variant: "destructive",
+      });
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+  }, [toast]);
+
+  // Payment mutation
+  const paymentMutation = useMutation({
+    mutationFn: async () => {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || "Failed to create checkout session");
+      }
+      return response.json();
+    },
+    onSuccess: (data) => {
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Payment error",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
+  const hasAccess = accessStatus?.hasAccess || false;
 
   // TXT Combiner state
   const [txtFiles, setTxtFiles] = useState<File[]>([]);
@@ -259,6 +320,32 @@ export default function Home() {
               <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
             ) : isAuthenticated && user ? (
               <div className="flex items-center gap-3">
+                {/* Access Status Badge */}
+                {accessLoading ? (
+                  <Badge variant="secondary">
+                    <Loader2 className="h-3 w-3 mr-1 animate-spin" />
+                    Checking...
+                  </Badge>
+                ) : hasAccess ? (
+                  <Badge className="bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20">
+                    <Clock className="h-3 w-3 mr-1" />
+                    Access Active
+                  </Badge>
+                ) : (
+                  <Button
+                    size="sm"
+                    onClick={() => paymentMutation.mutate()}
+                    disabled={paymentMutation.isPending}
+                    data-testid="button-buy-access"
+                  >
+                    {paymentMutation.isPending ? (
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    ) : (
+                      <CreditCard className="h-4 w-4 mr-2" />
+                    )}
+                    Buy Access ($1)
+                  </Button>
+                )}
                 <div className="flex items-center gap-2">
                   <Avatar className="h-8 w-8">
                     <AvatarImage src={user.profileImageUrl || undefined} alt={user.firstName || "User"} />
@@ -310,20 +397,66 @@ export default function Home() {
             </p>
           </div>
 
-          <Card className="overflow-hidden">
+          <Card className="overflow-hidden relative">
             <CardContent className="p-0">
+              {/* Paywall overlay when user doesn't have access */}
+              {isAuthenticated && !hasAccess && !accessLoading && (
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm rounded-md" data-testid="paywall-overlay">
+                  <div className="text-center space-y-4 p-6">
+                    <div className="rounded-full bg-primary/10 p-4 mx-auto w-fit">
+                      <CreditCard className="h-10 w-10 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold">Purchase Access</h3>
+                    <p className="text-muted-foreground max-w-sm">
+                      Get 1-day access to OCR text extraction for just $1
+                    </p>
+                    <Button
+                      onClick={() => paymentMutation.mutate()}
+                      disabled={paymentMutation.isPending}
+                      data-testid="button-buy-access-overlay"
+                    >
+                      {paymentMutation.isPending ? (
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      ) : (
+                        <CreditCard className="h-4 w-4 mr-2" />
+                      )}
+                      Buy Access ($1)
+                    </Button>
+                  </div>
+                </div>
+              )}
+              {/* Login prompt for unauthenticated users */}
+              {!isAuthenticated && !authLoading && (
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm rounded-md" data-testid="login-overlay">
+                  <div className="text-center space-y-4 p-6">
+                    <div className="rounded-full bg-primary/10 p-4 mx-auto w-fit">
+                      <LogIn className="h-10 w-10 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold">Login Required</h3>
+                    <p className="text-muted-foreground max-w-sm">
+                      Please login with Google to use the OCR feature
+                    </p>
+                    <Button asChild data-testid="button-login-overlay">
+                      <a href="/api/login">
+                        <LogIn className="h-4 w-4 mr-2" />
+                        Login with Google
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              )}
               <label
                 htmlFor="file-upload"
                 className={`relative flex flex-col items-center justify-center transition-all duration-200 p-12 rounded-md ${
-                  ocrMutation.isPending 
+                  ocrMutation.isPending || !hasAccess
                     ? "cursor-not-allowed opacity-60 bg-muted/30 border-2 border-dashed border-muted-foreground/20"
                     : isDragging 
                       ? "cursor-pointer bg-primary/5 border-2 border-dashed border-primary" 
                       : "cursor-pointer bg-muted/30 border-2 border-dashed border-muted-foreground/20 hover-elevate"
                 }`}
-                onDragOver={ocrMutation.isPending ? undefined : handleDragOver}
-                onDragLeave={ocrMutation.isPending ? undefined : handleDragLeave}
-                onDrop={ocrMutation.isPending ? undefined : handleDrop}
+                onDragOver={ocrMutation.isPending || !hasAccess ? undefined : handleDragOver}
+                onDragLeave={ocrMutation.isPending || !hasAccess ? undefined : handleDragLeave}
+                onDrop={ocrMutation.isPending || !hasAccess ? undefined : handleDrop}
                 data-testid="dropzone-file-upload"
               >
                 <input
@@ -332,7 +465,7 @@ export default function Home() {
                   className="sr-only"
                   accept=".pdf,.png,.jpg,.jpeg"
                   onChange={handleInputChange}
-                  disabled={ocrMutation.isPending}
+                  disabled={ocrMutation.isPending || !hasAccess}
                   data-testid="input-file-upload"
                 />
                 

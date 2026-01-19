@@ -1,8 +1,16 @@
-import type { Express } from "express";
+import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
 import axios from "axios";
+import Stripe from "stripe";
 import { setupAuth, registerAuthRoutes } from "./replit_integrations/auth";
+import { db } from "./db";
+import { payments } from "@shared/schema";
+import { eq, and, gt } from "drizzle-orm";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+  apiVersion: "2025-12-15.clover",
+});
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -116,6 +124,40 @@ async function extractTextFromPdf(pdfBuffer: Buffer): Promise<{ text: string; pa
   return extractTextFromResult(result);
 }
 
+// Helper function to check if user has valid access
+async function hasValidAccess(userId: string): Promise<boolean> {
+  const now = new Date();
+  const validPayments = await db
+    .select()
+    .from(payments)
+    .where(
+      and(
+        eq(payments.userId, userId),
+        gt(payments.expiresAt, now)
+      )
+    )
+    .limit(1);
+  
+  return validPayments.length > 0;
+}
+
+// Get access expiry for a user
+async function getAccessExpiry(userId: string): Promise<Date | null> {
+  const now = new Date();
+  const validPayments = await db
+    .select()
+    .from(payments)
+    .where(
+      and(
+        eq(payments.userId, userId),
+        gt(payments.expiresAt, now)
+      )
+    )
+    .limit(1);
+  
+  return validPayments.length > 0 ? validPayments[0].expiresAt : null;
+}
+
 export async function registerRoutes(
   httpServer: Server,
   app: Express
@@ -124,7 +166,128 @@ export async function registerRoutes(
   await setupAuth(app);
   registerAuthRoutes(app);
 
+  // Check user's access status
+  app.get("/api/access-status", async (req, res) => {
+    if (!req.isAuthenticated() || !req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    
+    const userId = (req.user as any).id;
+    const expiresAt = await getAccessExpiry(userId);
+    
+    res.json({
+      hasAccess: expiresAt !== null,
+      expiresAt: expiresAt?.toISOString() || null,
+    });
+  });
+
+  // Create Stripe checkout session
+  app.post("/api/create-checkout-session", async (req, res) => {
+    if (!req.isAuthenticated() || !req.user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const user = req.user as any;
+    const priceId = process.env.STRIPE_PRICE_ID;
+    
+    if (!priceId) {
+      return res.status(500).json({ message: "Stripe price ID not configured" });
+    }
+
+    try {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: [
+          {
+            price: priceId,
+            quantity: 1,
+          },
+        ],
+        mode: "payment",
+        success_url: `${req.headers.origin || "https://ocrpro.xyz"}?payment=success`,
+        cancel_url: `${req.headers.origin || "https://ocrpro.xyz"}?payment=cancelled`,
+        customer_email: user.email,
+        metadata: {
+          userId: user.id,
+        },
+      });
+
+      res.json({ url: session.url });
+    } catch (error: any) {
+      console.error("Stripe error:", error.message);
+      res.status(500).json({ message: "Failed to create checkout session" });
+    }
+  });
+
+  // Stripe webhook handler
+  app.post("/api/stripe-webhook", async (req: Request, res: Response) => {
+    const sig = req.headers["stripe-signature"];
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+    if (!sig || !webhookSecret) {
+      return res.status(400).json({ message: "Missing signature or webhook secret" });
+    }
+
+    let event: Stripe.Event;
+
+    try {
+      // Use rawBody stored by express.json verify function
+      const rawBody = (req as any).rawBody;
+      if (!rawBody) {
+        throw new Error("Raw body not available");
+      }
+      event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
+    } catch (err: any) {
+      console.error("Webhook signature verification failed:", err.message);
+      return res.status(400).json({ message: `Webhook Error: ${err.message}` });
+    }
+
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object as Stripe.Checkout.Session;
+      const userId = session.metadata?.userId;
+
+      if (userId) {
+        // Check if this session was already processed (idempotent)
+        const existingPayment = await db
+          .select()
+          .from(payments)
+          .where(eq(payments.stripeSessionId, session.id))
+          .limit(1);
+
+        if (existingPayment.length === 0) {
+          // Grant 1 day access
+          const expiresAt = new Date();
+          expiresAt.setDate(expiresAt.getDate() + 1);
+
+          await db.insert(payments).values({
+            userId,
+            stripeSessionId: session.id,
+            stripeCustomerId: session.customer as string || null,
+            expiresAt,
+          });
+
+          console.log(`Access granted to user ${userId} until ${expiresAt.toISOString()}`);
+        } else {
+          console.log(`Payment already processed for session ${session.id}`);
+        }
+      }
+    }
+
+    res.json({ received: true });
+  });
+
   app.post("/api/ocr", upload.single("file"), async (req, res) => {
+    // Check if user is authenticated and has valid access
+    if (!req.isAuthenticated() || !req.user) {
+      return res.status(401).json({ message: "Please log in to use the OCR feature" });
+    }
+
+    const userId = (req.user as any).id;
+    const hasAccess = await hasValidAccess(userId);
+    
+    if (!hasAccess) {
+      return res.status(403).json({ message: "Please purchase access to use the OCR feature" });
+    }
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });
