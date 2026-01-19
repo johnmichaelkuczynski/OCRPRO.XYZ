@@ -100,6 +100,25 @@ export default function Home() {
 
   const hasAccess = accessStatus?.hasAccess || false;
 
+  // Calculate remaining hours
+  const getRemainingTime = () => {
+    if (!accessStatus?.expiresAt) return null;
+    const expiresAt = new Date(accessStatus.expiresAt);
+    const now = new Date();
+    const diffMs = expiresAt.getTime() - now.getTime();
+    if (diffMs <= 0) return null;
+    
+    const hours = Math.floor(diffMs / (1000 * 60 * 60));
+    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    
+    if (hours > 0) {
+      return `${hours}h ${minutes}m remaining`;
+    }
+    return `${minutes}m remaining`;
+  };
+  
+  const remainingTime = hasAccess ? getRemainingTime() : null;
+
   // TXT Combiner state
   const [txtFiles, setTxtFiles] = useState<File[]>([]);
   const [combinedText, setCombinedText] = useState<string>("");
@@ -327,9 +346,9 @@ export default function Home() {
                     Checking...
                   </Badge>
                 ) : hasAccess ? (
-                  <Badge className="bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20">
+                  <Badge className="bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20" data-testid="badge-access-active">
                     <Clock className="h-3 w-3 mr-1" />
-                    Access Active
+                    {remainingTime || "Access Active"}
                   </Badge>
                 ) : (
                   <Button
