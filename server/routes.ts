@@ -2,7 +2,6 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
 import axios from "axios";
-import { OAuth2Client } from "google-auth-library";
 import { storage } from "./storage";
 
 const upload = multer({
@@ -14,16 +13,6 @@ const upload = multer({
 
 const AZURE_ENDPOINT = process.env.AZURE_COGNITIVE_ENDPOINT;
 const AZURE_KEY = process.env.AZURE_COGNITIVE_KEY;
-
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI;
-
-const oauth2Client = new OAuth2Client(
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-  GOOGLE_REDIRECT_URI
-);
 
 const MAX_POLLING_ATTEMPTS = 120; // Max 2 minutes of polling at 1s intervals
 const POLLING_INTERVAL = 1000; // 1 second
@@ -171,103 +160,6 @@ export async function registerRoutes(
       res.status(500).json({
         message: error.response?.data?.error?.message || error.message || "Failed to process file",
       });
-    }
-  });
-
-  // Get current user session
-  app.get("/api/user", (req, res) => {
-    if (req.session.user) {
-      res.json({ user: req.session.user });
-    } else {
-      res.json({ user: null });
-    }
-  });
-
-  // Logout
-  app.post("/api/logout", (req, res) => {
-    req.session.destroy((err) => {
-      if (err) {
-        return res.status(500).json({ message: "Failed to logout" });
-      }
-      res.json({ success: true });
-    });
-  });
-
-  // Google OAuth: Redirect to Google
-  app.get("/auth/google", (req, res) => {
-    if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REDIRECT_URI) {
-      return res.status(500).json({ message: "Google OAuth is not configured" });
-    }
-
-    const authUrl = oauth2Client.generateAuthUrl({
-      access_type: "offline",
-      scope: ["openid", "profile", "email"],
-    });
-
-    res.redirect(authUrl);
-  });
-
-  // Google OAuth: Callback
-  app.get("/auth/google/callback", async (req, res) => {
-    const { code } = req.query;
-
-    if (!code || typeof code !== "string") {
-      return res.redirect("/?error=no_code");
-    }
-
-    if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REDIRECT_URI) {
-      return res.redirect("/?error=oauth_not_configured");
-    }
-
-    try {
-      const { tokens } = await oauth2Client.getToken(code);
-      oauth2Client.setCredentials(tokens);
-
-      if (!tokens.id_token) {
-        console.error("No ID token received from Google");
-        return res.redirect("/?error=no_id_token");
-      }
-
-      const ticket = await oauth2Client.verifyIdToken({
-        idToken: tokens.id_token,
-        audience: GOOGLE_CLIENT_ID,
-      });
-
-      const payload = ticket.getPayload();
-      if (!payload) {
-        return res.redirect("/?error=invalid_token");
-      }
-
-      const googleId = payload.sub;
-      const email = payload.email!;
-      const name = payload.name;
-      const picture = payload.picture;
-
-      // Create or update user in storage
-      let user = await storage.getUserByGoogleId(googleId);
-      if (!user) {
-        user = await storage.createUser({
-          googleId,
-          email,
-          name,
-          picture,
-        });
-      } else {
-        user = await storage.updateUser(user.id, { email, name, picture });
-      }
-
-      // Set session
-      req.session.user = {
-        id: user.id.toString(),
-        email: user.email,
-        name: user.name || undefined,
-        picture: user.picture || undefined,
-      };
-
-      res.redirect("/");
-    } catch (error: any) {
-      console.error("OAuth Error:", error.message);
-      res.redirect("/?error=auth_failed");
     }
   });
 
