@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
 import axios from "axios";
-import { storage } from "./storage";
+import { setupAuth, registerAuthRoutes } from "./replit_integrations/auth";
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -120,6 +120,10 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  // Setup authentication (must be before other routes)
+  await setupAuth(app);
+  registerAuthRoutes(app);
+
   app.post("/api/ocr", upload.single("file"), async (req, res) => {
     try {
       if (!req.file) {

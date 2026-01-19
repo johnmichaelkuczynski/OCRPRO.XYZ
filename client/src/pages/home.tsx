@@ -4,7 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/use-auth";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { 
   Upload, 
@@ -16,7 +18,9 @@ import {
   Loader2,
   FileImage,
   ScanText,
-  RotateCcw
+  RotateCcw,
+  LogIn,
+  LogOut
 } from "lucide-react";
 
 const MAX_FILE_SIZE = 300 * 1024 * 1024; // 300MB in bytes
@@ -33,6 +37,7 @@ export default function Home() {
   const [isDragging, setIsDragging] = useState(false);
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
+  const { user, isLoading: authLoading, isAuthenticated } = useAuth();
 
   const ocrMutation = useMutation({
     mutationFn: async (file: File) => {
@@ -173,7 +178,48 @@ export default function Home() {
               <p className="text-xs text-muted-foreground">OCR Text Extraction</p>
             </div>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-3">
+            {authLoading ? (
+              <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+            ) : isAuthenticated && user ? (
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={user.profileImageUrl || undefined} alt={user.firstName || "User"} />
+                    <AvatarFallback>
+                      {user.firstName?.[0] || user.email?.[0]?.toUpperCase() || "U"}
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm font-medium hidden sm:inline">
+                    {user.firstName || user.email?.split("@")[0] || "User"}
+                  </span>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  data-testid="button-logout"
+                >
+                  <a href="/api/logout">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </a>
+                </Button>
+              </div>
+            ) : (
+              <Button
+                size="sm"
+                asChild
+                data-testid="button-login"
+              >
+                <a href="/api/login">
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Login with Google
+                </a>
+              </Button>
+            )}
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 

@@ -4,6 +4,7 @@
 A web application that extracts text from scanned PDFs and images (PNG, JPG) using Azure Cognitive Services Computer Vision API. Users can upload files up to 300MB via drag-and-drop or file picker, then copy or download the extracted text.
 
 ## Features
+- **Google login** via Replit Auth (supports Google, GitHub, email, and more)
 - Drag-and-drop file upload
 - Support for PDF, PNG, and JPG files (up to 300MB)
 - OCR text extraction using Azure Computer Vision Read API
@@ -16,6 +17,8 @@ A web application that extracts text from scanned PDFs and images (PNG, JPG) usi
 ## Tech Stack
 - **Frontend**: React, TypeScript, Tailwind CSS, shadcn/ui components
 - **Backend**: Express.js, Multer (file uploads), Axios (Azure API calls)
+- **Database**: PostgreSQL (Neon) with Drizzle ORM
+- **Authentication**: Replit Auth (OpenID Connect) - supports Google, GitHub, email
 - **API**: Azure Cognitive Services Computer Vision Read API v3.2
 
 ## Project Structure
@@ -41,6 +44,8 @@ server/
 ## Environment Variables
 - `AZURE_COGNITIVE_ENDPOINT` - Azure Computer Vision endpoint URL
 - `AZURE_COGNITIVE_KEY` - Azure Computer Vision API key
+- `DATABASE_URL` - PostgreSQL connection string (auto-configured)
+- `SESSION_SECRET` - Session encryption key (auto-configured)
 
 ## Running the App
 The app runs via the "Start application" workflow which executes `npm run dev`. The frontend and backend are served together on port 5000.
