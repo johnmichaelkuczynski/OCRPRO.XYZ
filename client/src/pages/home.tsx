@@ -124,6 +124,7 @@ export default function Home() {
   const [combinedText, setCombinedText] = useState<string>("");
   const [isCombining, setIsCombining] = useState(false);
   const [txtCopied, setTxtCopied] = useState(false);
+  const [isTxtDragging, setIsTxtDragging] = useState(false);
 
   const ocrMutation = useMutation({
     mutationFn: async (file: File) => {
@@ -257,8 +258,36 @@ export default function Home() {
         variant: "destructive",
       });
     }
-    setTxtFiles(txtFilesOnly);
+    setTxtFiles(prev => [...prev, ...txtFilesOnly]);
     setCombinedText("");
+  }, [toast]);
+
+  const handleTxtDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsTxtDragging(true);
+  }, []);
+
+  const handleTxtDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsTxtDragging(false);
+  }, []);
+
+  const handleTxtDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsTxtDragging(false);
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    const txtFilesOnly = droppedFiles.filter(f => f.name.endsWith('.txt'));
+    if (txtFilesOnly.length !== droppedFiles.length) {
+      toast({
+        title: "Some files skipped",
+        description: "Only .txt files are accepted",
+        variant: "destructive",
+      });
+    }
+    if (txtFilesOnly.length > 0) {
+      setTxtFiles(prev => [...prev, ...txtFilesOnly]);
+      setCombinedText("");
+    }
   }, [toast]);
 
   const handleCombineFiles = useCallback(async () => {
@@ -696,12 +725,21 @@ export default function Home() {
                 <div className="flex flex-col items-center gap-4">
                   <label
                     htmlFor="txt-upload"
-                    className="flex flex-col items-center justify-center w-full p-8 rounded-md bg-muted/30 border-2 border-dashed border-muted-foreground/20 cursor-pointer hover-elevate"
+                    className={`flex flex-col items-center justify-center w-full p-8 rounded-md transition-all duration-200 cursor-pointer ${
+                      isTxtDragging
+                        ? "bg-primary/5 border-2 border-dashed border-primary"
+                        : "bg-muted/30 border-2 border-dashed border-muted-foreground/20 hover-elevate"
+                    }`}
                     data-testid="dropzone-txt-upload"
+                    onDragOver={handleTxtDragOver}
+                    onDragLeave={handleTxtDragLeave}
+                    onDrop={handleTxtDrop}
                   >
-                    <FileText className="h-10 w-10 text-muted-foreground mb-3" />
-                    <p className="text-lg font-medium">Select TXT Files</p>
-                    <p className="text-sm text-muted-foreground">Click to choose multiple .txt files</p>
+                    <FileText className={`h-10 w-10 mb-3 ${isTxtDragging ? "text-primary" : "text-muted-foreground"}`} />
+                    <p className="text-lg font-medium">
+                      {isTxtDragging ? "Drop TXT files here" : "Drag & drop TXT files here"}
+                    </p>
+                    <p className="text-sm text-muted-foreground">or click to choose multiple .txt files</p>
                     <input
                       id="txt-upload"
                       type="file"
