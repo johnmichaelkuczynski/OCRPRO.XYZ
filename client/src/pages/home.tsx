@@ -170,6 +170,26 @@ export default function Home() {
   };
 
   const handleFile = useCallback((file: File) => {
+    // Check if user is authenticated
+    if (!isAuthenticated) {
+      toast({
+        title: "Login required",
+        description: "Please login with Google to use OCR.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Check if user has access
+    if (!hasAccess) {
+      toast({
+        title: "Access required",
+        description: "Please purchase access ($1 for 1 day) to use OCR.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     const error = validateFile(file);
     if (error) {
       toast({
@@ -182,7 +202,7 @@ export default function Home() {
     setFile(file);
     setExtractedText("");
     ocrMutation.mutate(file);
-  }, [toast, ocrMutation]);
+  }, [toast, ocrMutation, isAuthenticated, hasAccess]);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -445,66 +465,20 @@ export default function Home() {
             </p>
           </div>
 
-          <Card className="overflow-hidden relative">
+          <Card className="overflow-hidden">
             <CardContent className="p-0">
-              {/* Paywall overlay when user doesn't have access */}
-              {isAuthenticated && !hasAccess && !accessLoading && (
-                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm rounded-md" data-testid="paywall-overlay">
-                  <div className="text-center space-y-4 p-6">
-                    <div className="rounded-full bg-primary/10 p-4 mx-auto w-fit">
-                      <CreditCard className="h-10 w-10 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold">Purchase Access</h3>
-                    <p className="text-muted-foreground max-w-sm">
-                      Get 1-day access to OCR text extraction for just $1
-                    </p>
-                    <Button
-                      onClick={() => paymentMutation.mutate()}
-                      disabled={paymentMutation.isPending}
-                      data-testid="button-buy-access-overlay"
-                    >
-                      {paymentMutation.isPending ? (
-                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      ) : (
-                        <CreditCard className="h-4 w-4 mr-2" />
-                      )}
-                      Buy Access ($1)
-                    </Button>
-                  </div>
-                </div>
-              )}
-              {/* Login prompt for unauthenticated users */}
-              {!isAuthenticated && !authLoading && (
-                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm rounded-md" data-testid="login-overlay">
-                  <div className="text-center space-y-4 p-6">
-                    <div className="rounded-full bg-primary/10 p-4 mx-auto w-fit">
-                      <LogIn className="h-10 w-10 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold">Login Required</h3>
-                    <p className="text-muted-foreground max-w-sm">
-                      Please login with Google to use the OCR feature
-                    </p>
-                    <Button asChild data-testid="button-login-overlay">
-                      <a href="/api/login">
-                        <LogIn className="h-4 w-4 mr-2" />
-                        Login with Google
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              )}
               <label
                 htmlFor="file-upload"
                 className={`relative flex flex-col items-center justify-center transition-all duration-200 p-12 rounded-md ${
-                  ocrMutation.isPending || !hasAccess
+                  ocrMutation.isPending
                     ? "cursor-not-allowed opacity-60 bg-muted/30 border-2 border-dashed border-muted-foreground/20"
                     : isDragging 
                       ? "cursor-pointer bg-primary/5 border-2 border-dashed border-primary" 
                       : "cursor-pointer bg-muted/30 border-2 border-dashed border-muted-foreground/20 hover-elevate"
                 }`}
-                onDragOver={ocrMutation.isPending || !hasAccess ? undefined : handleDragOver}
-                onDragLeave={ocrMutation.isPending || !hasAccess ? undefined : handleDragLeave}
-                onDrop={ocrMutation.isPending || !hasAccess ? undefined : handleDrop}
+                onDragOver={ocrMutation.isPending ? undefined : handleDragOver}
+                onDragLeave={ocrMutation.isPending ? undefined : handleDragLeave}
+                onDrop={ocrMutation.isPending ? undefined : handleDrop}
                 data-testid="dropzone-file-upload"
               >
                 <input
@@ -513,7 +487,7 @@ export default function Home() {
                   className="sr-only"
                   accept=".pdf,.png,.jpg,.jpeg"
                   onChange={handleInputChange}
-                  disabled={ocrMutation.isPending || !hasAccess}
+                  disabled={ocrMutation.isPending}
                   data-testid="input-file-upload"
                 />
                 
