@@ -1,0 +1,94 @@
+kuczynski | Numbers of one kind never size-comparable with numbers of any other kind | Mathematics
+kuczynski | Formal calculi inherently incomplete | Mathematics
+kuczynski | The laws of logic not conventions | Logic
+kuczynski | Why there are non-perspectival truths that an indexical-free language is ipso facto unable to express | Language
+kuczynski | Empirical theories as interpreted formal calculi | Philosophy of Science
+kuczynski | Statements are false that self-refute | Logic
+kuczynski | Statements are true that self-verify | Logic
+kuczynski | Nothing doesn't follow from a contradiction | Logic
+kuczynski | Nothing doesn't entail a tautology | Logic
+kuczynski | No contradiction follows from a truth | Logic
+kuczynski | No falsehood follows from a tautology | Logic
+kuczynski | A truth is necessary if it follows from any given statement-set | Logic
+kuczynski | A truth is necessary if its negation entails a contradiction | Logic
+kuczynski | A truth is possible if it does not entail a contradiction | Logic
+kuczynski | A truth is possible if its negation is not necessary | Logic
+kuczynski | Statements about number are encrypted statements about order | Mathematics
+kuczynski | Mathematics is the study of ordinal relations | Mathematics
+kuczynski | Any given truth concerning ordinal relations is equivalent with a truth of set-theory | Mathematics
+kuczynski | An algorithm is simply a useful recursion | Mathematics
+kuczynski | Whenever somebody articulates a thought, he does by computing the identity of the appropriate expression; and whenever somebody understands the words of another, he does so by computing its meaning | Language
+kuczynski | Any two classes that can be recursively defined have the same cardinality | Mathematics
+kuczynski | Given any top-down list of elements of ℝ, expressed as nonterminating decimals, there is a number, namely D(L) (read: the diagonal of L), that is not in L | Mathematics
+kuczynski | Diagonal arguments are always used to prove incompleteness | Mathematics
+kuczynski | If it can be proved that, for any given model M of a given axiom-set, there is a model M* of that same axiom-set that is non-isomorphic with M*, then that axiom-set is incomplete | Mathematics
+kuczynski | Model-theory is the branch of mathematics that studies classes of sentence-schemata | Mathematics
+kuczynski | There are many reasons why no scientific discipline can be formalized | Philosophy of Science
+kuczynski | There is nothing that either ℚ or ℤ enables us to say about the world that ℕ doesn't allow us to say. The discovery of ℚ-arithmetic and ℤ-arithmetic were ultimately more notational than mathematical | Mathematics
+kuczynski | But the discovery of ℝ-arithmetic was a genuine intellectual advance | Mathematics
+kuczynski | Even though ℝ is built out of the same ingredients as ℚ and ℤ and therefore ℕ itself, the way in which those ingredients are arranged in ℝ differs fundamentally from the way in which they are arranged in any given one of the other three classes | Mathematics
+kuczynski | Cantor's system is not really about number at all. It is an analysis of recursivity and its limits—that is to say, of completeness and incompleteness | Mathematics
+kuczynski | An incompleteness proof is simply a proof that, for some class C, there is no recursive definition of C | Mathematics
+kuczynski | The non-recursivity of ℝ is really a consequence of the fact that [PK]>[K] | Mathematics
+kuczynski | The non-recursivity of ℝ is a consequence of the fact that there is no recursive definition of the class of all logically true statements | Mathematics
+kuczynski | Kurt Gödel's celebrated (1931) incompleteness proof is to the effect that the class of all arithmetical truths is incomplete | Mathematics
+kuczynski | Gödel's theorem is really a special case of a more comprehensive principle, namely, that the class of recursive definitions is not itself recursively defined | Mathematics
+kuczynski | In other words, there is no formal procedure by which, when given an arbitrary statement S, to determine whether or not S is a truth of logic | Logic
+kuczynski | P strictly entails Q if Q is a logical consequence of P. Q is a logical consequence of P if there is no possible world where P is true and Q is false | Logic
+kuczynski | A language is a recursively defined class of sentences | Language
+kuczynski | A 'language' that contains only finitely many expressions is but a caricature of a bona fide language | Language
+kuczynski | That said, there is one intrinsic difference between formal (artificial) and natural languages, namely, that any given natural language is really hierarchy of languages | Language
+kuczynski | The concept of formal truth is a relative notion | Logic
+kuczynski | Therefore, there is no recursive definition of the class of logical truths | Logic
+kuczynski | Mathematics is the study of structure. Statements about order can always be expressed as statements about relations holding among numbers or sets thereof | Mathematics
+kuczynski | But mathematics is interested in number only because truths about number are encrypted truths about structure | Mathematics
+kuczynski | Laws of nature are invariances. Laws of nature are framework-invariant relations between objects | Philosophy of Science
+kuczynski | Geometry is not interested in this or that circle or square... geometry is interested in properties of shapes that are transformation-invariant | Mathematics
+kuczynski | Formal logic is really the geometry of strings of symbols. It has nothing to do with rules of inference | Logic
+kuczynski | Syntax is symbol-geometry. Semantics is symbol-meaning. Formal logic is syntax, not semantics. Informal logic is semantics, not syntax | Logic
+kuczynski | Meaning is a relation between statement and non-statement; truth is a property of meaning. Therefore, the concepts of meaning and truth have no place in the discipline of formal logic | Logic
+kuczynski | Thus, to the extent that logic is concerned with meaning and truth, it is incapable of being formalized; and to the extent that logic is capable of being formalized, it doesn't concern meaning or truth | Logic
+kuczynski | Mathematics is the discipline that identifies structural invariants | Mathematics
+kuczynski | According to the Platonist view, numbers and other mathematical entities are non-spatiotemporal; their existence is no more mind-dependent than that of a rock or a tree, but, unlike rocks and trees, those entities are not in space or time | Philosophy of Mathematics
+kuczynski | The formalist holds that Mathematics holds among meaningless expressions of arbitrary symbolic calculi and For that reason mathematical realities have no existence outside of the calculi that we happen to create | Philosophy of Mathematics
+kuczynski | It is therefore quite as misconceived to say that '35,247×254=8,952,738' is true by convention as it is to say that 'snow is white' is true by convention | Philosophy of Mathematics
+kuczynski | Logical consequences of conventions are non-conventions that have a conventional basis | Logic
+kuczynski | If formalism is correct, then mathematics is the study of uninterpreted formal calculi | Philosophy of Mathematics
+kuczynski | Mathematics is the study of uninterpreted formal calculi. And given any one such calculus, the rules assigning meaning to its primitive expressions (the axioms of that calculus, in other words) are indeed conventions and, therefore, tautologously true. But there is nothing conventional about the relationship between the axioms of a formal calculus and the consequences of those axioms: those relations are of a non-conventional, strictly logical nature | Philosophy of Mathematics
+kuczynski | A set of meaning-postulates models a given uninterpreted calculus just in case, if it is supposed that the expressions of that calculus have the meanings in question, the resulting interpreted calculus is consistent | Philosophy of Mathematics
+kuczynski | When an interpretation adequately models a formal calculus, the result is a scientific discipline that describes the universe (or some sector thereof) | Philosophy of Science
+kuczynski | Whenever it is assumed that logical/mathematical laws are creations of ours, the relations among those creations end up having all of the properties that numbers/mathematical entities per se are supposed to have | Philosophy of Mathematics
+kuczynski | Unless our inborn psychological structure shadowed mind-independent facts, it wouldn't be able to organize the effects that such facts had on us | Epistemology
+kuczynski | If arithmetical truths registered empirical facts, we'd have to adjust the laws of arithmetic with every such advance in our empirical knowledge. But we don't. The arithmetical norms remains | Philosophy of Mathematics
+kuczynski | Physical truths cannot be read off of strictly mathematical truths | Philosophy of Mathematics
+kuczynski | Mathematics turns out to be a kind of linguistics; and poets (and philosophers) turn out to be mathematicians, albeit ones whose data-sets, unlike those of physicists, are not best organized by calculi that are capable of numerical interpretations | Philosophy of Mathematics
+kuczynski | Mathematical truths are not given by theorems or even by metatheorems; for, as these examples show, theorems and metatheorems are calculus internal | Philosophy of Mathematics
+kuczynski | Substantive mathematical truths are given by metan-theorems, where a meta1-theorem is a meta-theorem and metan+1-theorem is a meta-metatheorem | Philosophy of Mathematics
+kuczynski | Mathematicians—and, I would contend, all thinkers of all kinds—are interested, ultimately, only those statement-sets that either have empirical interpretations or in terms of which those that do have such interpretations are to be understood | Philosophy of Mathematics
+kuczynski | Without raw data, it isn't possible to identify prediction- and explanation-generative formal calculi; without formal calculi, it is not possible to convert raw data into predictions and explanations | Philosophy of Science
+kuczynski | The spuriousness of the distinction between mathematical and non-mathematical laws... it isn't laws that are mathematical; it is descriptions of laws | Philosophy of Mathematics
+kuczynski | The reason that physics can be mapped onto calculus is that calculus was invented to describe physical laws. The reason that banking can be mapped onto arithmetic is that arithmetic was invented to accommodate the needs of bankers | Philosophy of Mathematics
+kuczynski | The truths of the differential calculus are non-empirical but empirically motivated, the same being true of the truths of arithmetic, analytic geometry, and every other branch of mathematics | Philosophy of Mathematics
+kuczynski | A failure to understand the distinction between empirical and empirically motivated has led to disastrously wrong theories, e.g. Mill's empiricism and Hilbert's formalism, concerning the nature of mathematics | Philosophy of Mathematics
+kuczynski | When a formalism is invented, so as to provide a systematic way of interpreting empirical data, that formalism is almost always capable of multiple interpretations | Philosophy of Science
+kuczynski | He would rather work with a formalism that has a great deal of scope, but always yields low-resolution truths, than one that has minimal scope, but always yields high resolution truths | Philosophy of Science
+kuczynski | Platonism is the doctrine that spatiotemporal entities are 'instances' of—meaning only that they are to be understood in terms of—nonspatiotemporal entities. This doctrine is correct | Metaphysics
+kuczynski | The spatiotemporal world is to be understood in terms of relations holding among its constituents and, therefore, in terms of relations holding among the space-time regions occupied by its constituents | Metaphysics
+kuczynski | Truths about structure cannot themselves always be structural truths | Philosophy of Mathematics
+kuczynski | Mathematics aspires to identify, not this or that specific formal truth, but entire classes of formal truths. The propositions that identify such classes are not themselves formal truths | Philosophy of Mathematics
+kuczynski | Truths about linguistic conventions are not themselves linguistic conventions | Philosophy of Language
+kuczynski | Thus, truths about formal truths are not themselves formal truths, and truths about conventions are not themselves conventions | Logic
+kuczynski | Necessary consequences of tautologies are not themselves tautologies | Logic
+kuczynski | The real laws of logic are meta-laws: laws about laws; laws that transform law-sets into different but equally powerful law-sets | Logic
+kuczynski | No viable logic has but one primitive category: there must be at least two. And however many primitive categories there are, they must be mutually exclusive: otherwise they aren't primitive | Logic
+kuczynski | For x to have a certain mass/length/temperature is for x to have certain causal properties | Metaphysics
+kuczynski | Seemingly synchronic forms of measurement, e.g. the juxtaposition method of length-determination, collapse into their obviously diachronic counterparts | Philosophy of Science
+kuczynski | A static property, e.g. length, is a four-dimensional property. A dynamic property, e.g. velocity, is a change in a static property | Metaphysics
+kuczynski | The arbitrariness of the metrical unit What one regards as a unit of length (or time or mass) is obviously arbitrary. In fact, it is inherent in the nature of measurement that one's choice of metrical unit be arbitrary | Philosophy of Science
+kuczynski | Never a priori the case that the reals yielded by measurement correspond to the cardinals yielded by enumeration | Philosophy of Science
+kuczynski | Large distances are non-integrable. They cannot be determined by adding together small distances | Philosophy of Science
+kuczynski | Wherever complexity is involved, quantitative differences involve qualitative differences | Metaphysics
+kuczynski | No consistent language has the resources to adequately describe its own resources | Language
+kuczynski | The more systematic a language is, the more precise are the statements belonging to it | Language
+kuczynski | The more productive a language is, the greater scope it has | Language
+kuczynski | A language must therefore be able to 'turn over', like an engine, an indefinitely large number of times | Language
