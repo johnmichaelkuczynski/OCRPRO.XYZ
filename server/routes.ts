@@ -308,9 +308,12 @@ export async function registerRoutes(
         mimetype === "image/jpg"
       ) {
         text = await extractTextFromImage(buffer);
+      } else if (mimetype === "text/plain") {
+        // TXT files - just return the content directly
+        text = buffer.toString("utf-8");
       } else {
         return res.status(400).json({
-          message: "Unsupported file type. Please upload PDF, PNG, or JPG files.",
+          message: "Unsupported file type. Please upload PDF, PNG, JPG, or TXT files.",
         });
       }
 
