@@ -171,26 +171,6 @@ export default function Home() {
   };
 
   const handleFile = useCallback((file: File) => {
-    // Check if user is authenticated
-    if (!isAuthenticated) {
-      toast({
-        title: "Login required",
-        description: "Please login with Google to use OCR.",
-        variant: "destructive",
-      });
-      return;
-    }
-    
-    // Check if user has access
-    if (!hasAccess) {
-      toast({
-        title: "Access required",
-        description: "Please purchase access ($1 for 1 day) to use OCR.",
-        variant: "destructive",
-      });
-      return;
-    }
-    
     const error = validateFile(file);
     if (error) {
       toast({
@@ -203,7 +183,7 @@ export default function Home() {
     setFile(file);
     setExtractedText("");
     ocrMutation.mutate(file);
-  }, [toast, ocrMutation, isAuthenticated, hasAccess]);
+  }, [toast, ocrMutation]);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();

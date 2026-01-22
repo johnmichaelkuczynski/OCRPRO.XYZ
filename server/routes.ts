@@ -277,17 +277,16 @@ export async function registerRoutes(
   });
 
   app.post("/api/ocr", upload.single("file"), async (req, res) => {
-    // Check if user is authenticated and has valid access
-    if (!req.isAuthenticated() || !req.user) {
-      return res.status(401).json({ message: "Please log in to use the OCR feature" });
+    // Check access - if logged in, verify payment; if not logged in, allow upload anyway for testing
+    if (req.isAuthenticated() && req.user) {
+      const userId = (req.user as any).id;
+      const hasAccess = await hasValidAccess(userId);
+      
+      if (!hasAccess) {
+        return res.status(403).json({ message: "Please purchase access to use the OCR feature" });
+      }
     }
-
-    const userId = (req.user as any).id;
-    const hasAccess = await hasValidAccess(userId);
-    
-    if (!hasAccess) {
-      return res.status(403).json({ message: "Please purchase access to use the OCR feature" });
-    }
+    // Allow uploads without login for now
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });
