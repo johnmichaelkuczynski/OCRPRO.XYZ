@@ -1,35 +1,9 @@
 import passport from "passport";
 import session from "express-session";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import type { Express, RequestHandler } from "express";
 import connectPg from "connect-pg-simple";
 import { authStorage } from "./storage";
-import * as client from "openid-client";
-
-let oidcConfig: client.Configuration | null = null;
-
-async function getOidcConfig(): Promise<client.Configuration | null> {
-  if (oidcConfig) return oidcConfig;
-  
-  const issuerUrl = process.env.ISSUER_URL || process.env.REPLIT_DEPLOYMENT_URL 
-    ? `https://${process.env.REPLIT_DEPLOYMENT_URL}`
-    : null;
-  
-  if (!issuerUrl) {
-    // Fallback to Google OAuth if no Replit OIDC
-    return null;
-  }
-  
-  try {
-    oidcConfig = await client.discovery(
-      new URL(issuerUrl),
-      process.env.REPL_ID!,
-      process.env.REPLIT_OIDC_CLIENT_SECRET
-    );
-    return oidcConfig;
-  } catch {
-    return null;
-  }
-}
 
 export function getSession() {
   const sessionTtl = 30 * 24 * 60 * 60 * 1000; // 30 days
@@ -47,7 +21,7 @@ export function getSession() {
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       maxAge: sessionTtl,
     },
@@ -59,6 +33,40 @@ export async function setupAuth(app: Express) {
   app.use(getSession());
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // Check if Google OAuth is configured
+  const googleClientId = process.env.GOOGLE_CLIENT_ID;
+  const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
+  
+  if (!googleClientId || !googleClientSecret) {
+    console.error("Google OAuth credentials not configured");
+    return;
+  }
+
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: googleClientId,
+        clientSecret: googleClientSecret,
+        callbackURL: process.env.GOOGLE_REDIRECT_URI || "/auth/google/callback",
+        passReqToCallback: true,
+      },
+      async (req, accessToken, refreshToken, profile, done) => {
+        try {
+          const user = await authStorage.upsertUser({
+            id: profile.id,
+            email: profile.emails?.[0]?.value || null,
+            firstName: profile.name?.givenName || null,
+            lastName: profile.name?.familyName || null,
+            profileImageUrl: profile.photos?.[0]?.value || null,
+          });
+          done(null, user);
+        } catch (error) {
+          done(error as Error);
+        }
+      }
+    )
+  );
 
   passport.serializeUser((user: any, done) => {
     done(null, user.id);
@@ -73,72 +81,24 @@ export async function setupAuth(app: Express) {
     }
   });
 
-  // Login route
-  app.get("/api/login", async (req, res) => {
-    const config = await getOidcConfig();
-    
-    if (!config) {
-      return res.status(500).json({ message: "Authentication not configured" });
+  // Google OAuth routes
+  app.get("/auth/google", passport.authenticate("google", {
+    scope: ["profile", "email"],
+  }));
+
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", {
+      failureRedirect: "/?error=auth_failed",
+    }),
+    (req, res) => {
+      res.redirect("/");
     }
+  );
 
-    const callbackUrl = `${req.protocol}://${req.get("host")}/api/callback`;
-    const nonce = client.randomNonce();
-    const state = client.randomState();
-    
-    (req.session as any).oidcNonce = nonce;
-    (req.session as any).oidcState = state;
-
-    const authUrl = client.buildAuthorizationUrl(config, {
-      redirect_uri: callbackUrl,
-      scope: "openid email profile",
-      nonce,
-      state,
-    });
-
-    res.redirect(authUrl.href);
-  });
-
-  // Callback route
-  app.get("/api/callback", async (req, res) => {
-    try {
-      const config = await getOidcConfig();
-      if (!config) {
-        return res.redirect("/?error=auth_not_configured");
-      }
-
-      const callbackUrl = `${req.protocol}://${req.get("host")}/api/callback`;
-      const nonce = (req.session as any).oidcNonce;
-      const state = (req.session as any).oidcState;
-
-      const tokens = await client.authorizationCodeGrant(config, new URL(req.url, callbackUrl), {
-        expectedNonce: nonce,
-        expectedState: state,
-      });
-
-      const claims = tokens.claims();
-      if (!claims) {
-        return res.redirect("/?error=no_claims");
-      }
-
-      const user = await authStorage.upsertUser({
-        id: claims.sub,
-        email: (claims as any).email || null,
-        firstName: (claims as any).first_name || (claims as any).given_name || null,
-        lastName: (claims as any).last_name || (claims as any).family_name || null,
-        profileImageUrl: (claims as any).profile_image_url || (claims as any).picture || null,
-      });
-
-      req.login(user, (err) => {
-        if (err) {
-          console.error("Login error:", err);
-          return res.redirect("/?error=login_failed");
-        }
-        res.redirect("/");
-      });
-    } catch (error) {
-      console.error("Callback error:", error);
-      res.redirect("/?error=callback_failed");
-    }
+  // Login route - redirect to Google
+  app.get("/api/login", (req, res) => {
+    res.redirect("/auth/google");
   });
 
   // Logout route
