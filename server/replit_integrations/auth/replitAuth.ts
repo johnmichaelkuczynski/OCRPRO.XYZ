@@ -43,13 +43,15 @@ export async function setupAuth(app: Express) {
     return;
   }
 
+  // Use relative path - Google OAuth library will construct full URL from request
   passport.use(
     new GoogleStrategy(
       {
         clientID: googleClientId,
         clientSecret: googleClientSecret,
-        callbackURL: process.env.GOOGLE_REDIRECT_URI || "/auth/google/callback",
+        callbackURL: "/auth/google/callback",
         passReqToCallback: true,
+        proxy: true,
       },
       async (req, accessToken, refreshToken, profile, done) => {
         try {
