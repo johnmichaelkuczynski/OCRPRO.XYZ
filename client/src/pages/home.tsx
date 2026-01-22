@@ -646,40 +646,19 @@ export default function Home() {
           )}
 
           {!file && !extractedText && (
-            <div className="grid gap-6 md:grid-cols-3">
-              <Card className="p-6">
-                <div className="flex flex-col items-center text-center gap-3">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Upload className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold">Upload</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Drag and drop or click to upload your scanned documents
-                  </p>
-                </div>
-              </Card>
-              <Card className="p-6">
-                <div className="flex flex-col items-center text-center gap-3">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <ScanText className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold">Extract</h3>
-                  <p className="text-sm text-muted-foreground">
-                    AI-powered OCR extracts text from your images and PDFs
-                  </p>
-                </div>
-              </Card>
-              <Card className="p-6">
-                <div className="flex flex-col items-center text-center gap-3">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Download className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold">Export</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Copy to clipboard or download as a text file
-                  </p>
-                </div>
-              </Card>
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Upload className="h-4 w-4 text-primary" />
+                <span>Upload</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ScanText className="h-4 w-4 text-primary" />
+                <span>Extract</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Download className="h-4 w-4 text-primary" />
+                <span>Export</span>
+              </div>
             </div>
           )}
 
