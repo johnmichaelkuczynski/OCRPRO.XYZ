@@ -31,7 +31,8 @@ const ACCEPTED_TYPES = [
   "application/pdf",
   "image/png",
   "image/jpeg",
-  "image/jpg"
+  "image/jpg",
+  "text/plain"
 ];
 
 export default function Home() {
@@ -161,7 +162,7 @@ export default function Home() {
 
   const validateFile = (file: File): string | null => {
     if (!ACCEPTED_TYPES.includes(file.type)) {
-      return "Please upload a PDF, PNG, or JPG file";
+      return "Please upload a PDF, PNG, JPG, or TXT file";
     }
     if (file.size > MAX_FILE_SIZE) {
       return "File size must be less than 300MB";
@@ -485,7 +486,7 @@ export default function Home() {
                   id="file-upload"
                   type="file"
                   className="sr-only"
-                  accept=".pdf,.png,.jpg,.jpeg"
+                  accept=".pdf,.png,.jpg,.jpeg,.txt"
                   onChange={handleInputChange}
                   disabled={ocrMutation.isPending}
                   data-testid="input-file-upload"
@@ -507,6 +508,7 @@ export default function Home() {
                     <Badge variant="secondary">PDF</Badge>
                     <Badge variant="secondary">PNG</Badge>
                     <Badge variant="secondary">JPG</Badge>
+                    <Badge variant="secondary">TXT</Badge>
                   </div>
                   <p className="text-xs text-muted-foreground">
                     Maximum file size: 300MB
