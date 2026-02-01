@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import multer from "multer";
 import axios from "axios";
 import Stripe from "stripe";
+import mammoth from "mammoth";
 import { setupAuth, registerAuthRoutes } from "./replit_integrations/auth";
 import { db } from "./db";
 import { payments } from "@shared/schema";
@@ -179,6 +180,28 @@ export async function registerRoutes(
       hasAccess: expiresAt !== null,
       expiresAt: expiresAt?.toISOString() || null,
     });
+  });
+
+  // Extract text from Word document (.docx)
+  app.post("/api/extract-docx", upload.single("file"), async (req, res) => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({ message: "No file uploaded" });
+      }
+
+      const fileBuffer = req.file.buffer;
+      const result = await mammoth.extractRawText({ buffer: fileBuffer });
+      
+      res.json({ 
+        text: result.value,
+        messages: result.messages 
+      });
+    } catch (error: any) {
+      console.error("Word document extraction error:", error.message);
+      res.status(500).json({ 
+        message: error.message || "Failed to extract text from Word document" 
+      });
+    }
   });
 
   // Create Stripe checkout session

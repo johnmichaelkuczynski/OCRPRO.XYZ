@@ -255,15 +255,15 @@ export default function Home() {
   // TXT Combiner functions
   const handleTxtFilesChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
-    const txtFilesOnly = files.filter(f => f.name.endsWith('.txt'));
-    if (txtFilesOnly.length !== files.length) {
+    const validFiles = files.filter(f => f.name.endsWith('.txt') || f.name.endsWith('.docx'));
+    if (validFiles.length !== files.length) {
       toast({
         title: "Some files skipped",
-        description: "Only .txt files are accepted",
+        description: "Only .txt and .docx files are accepted",
         variant: "destructive",
       });
     }
-    setTxtFiles(prev => [...prev, ...txtFilesOnly]);
+    setTxtFiles(prev => [...prev, ...validFiles]);
     setCombinedText("");
   }, [toast]);
 
@@ -281,16 +281,16 @@ export default function Home() {
     e.preventDefault();
     setIsTxtDragging(false);
     const droppedFiles = Array.from(e.dataTransfer.files);
-    const txtFilesOnly = droppedFiles.filter(f => f.name.endsWith('.txt'));
-    if (txtFilesOnly.length !== droppedFiles.length) {
+    const validFiles = droppedFiles.filter(f => f.name.endsWith('.txt') || f.name.endsWith('.docx'));
+    if (validFiles.length !== droppedFiles.length) {
       toast({
         title: "Some files skipped",
-        description: "Only .txt files are accepted",
+        description: "Only .txt and .docx files are accepted",
         variant: "destructive",
       });
     }
-    if (txtFilesOnly.length > 0) {
-      setTxtFiles(prev => [...prev, ...txtFilesOnly]);
+    if (validFiles.length > 0) {
+      setTxtFiles(prev => [...prev, ...validFiles]);
       setCombinedText("");
     }
   }, [toast]);
@@ -302,7 +302,27 @@ export default function Home() {
       // Read files sequentially to preserve exact order
       const contents: string[] = [];
       for (const file of txtFiles) {
-        const text = await file.text();
+        let text: string;
+        
+        if (file.name.endsWith('.docx')) {
+          // Extract text from Word document via API
+          const formData = new FormData();
+          formData.append("file", file);
+          const response = await fetch("/api/extract-docx", {
+            method: "POST",
+            body: formData,
+          });
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || `Failed to extract text from ${file.name}`);
+          }
+          const result = await response.json();
+          text = result.text;
+        } else {
+          // Read plain text file directly
+          text = await file.text();
+        }
+        
         contents.push(text);
       }
       const combined = contents.join("\n\n--- Next File ---\n\n");
@@ -311,10 +331,10 @@ export default function Home() {
         title: "Files combined",
         description: `Combined ${txtFiles.length} files in order`,
       });
-    } catch {
+    } catch (err: any) {
       toast({
         title: "Error combining files",
-        description: "Failed to read one or more files",
+        description: err.message || "Failed to read one or more files",
         variant: "destructive",
       });
     } finally {
@@ -707,10 +727,10 @@ export default function Home() {
           <div className="border-t pt-8 mt-8">
             <div className="text-center space-y-3 mb-6">
               <h2 className="text-2xl font-bold tracking-tight">
-                Combine TXT Files
+                Combine Text Files
               </h2>
               <p className="text-muted-foreground">
-                Select multiple .txt files to combine them into one
+                Select multiple .txt or .docx files to combine them into one
               </p>
             </div>
 
@@ -731,14 +751,14 @@ export default function Home() {
                   >
                     <FileText className={`h-10 w-10 mb-3 ${isTxtDragging ? "text-primary" : "text-muted-foreground"}`} />
                     <p className="text-lg font-medium">
-                      {isTxtDragging ? "Drop TXT files here" : "Drag & drop TXT files here"}
+                      {isTxtDragging ? "Drop files here" : "Drag & drop TXT or Word files here"}
                     </p>
-                    <p className="text-sm text-muted-foreground">or click to choose multiple .txt files</p>
+                    <p className="text-sm text-muted-foreground">or click to choose multiple .txt or .docx files</p>
                     <input
                       id="txt-upload"
                       type="file"
                       multiple
-                      accept=".txt"
+                      accept=".txt,.docx"
                       className="sr-only"
                       onChange={handleTxtFilesChange}
                       data-testid="input-txt-upload"
