@@ -299,14 +299,17 @@ export default function Home() {
     if (txtFiles.length === 0) return;
     setIsCombining(true);
     try {
-      const contents = await Promise.all(
-        txtFiles.map(file => file.text())
-      );
+      // Read files sequentially to preserve exact order
+      const contents: string[] = [];
+      for (const file of txtFiles) {
+        const text = await file.text();
+        contents.push(text);
+      }
       const combined = contents.join("\n\n--- Next File ---\n\n");
       setCombinedText(combined);
       toast({
         title: "Files combined",
-        description: `Combined ${txtFiles.length} files`,
+        description: `Combined ${txtFiles.length} files in order`,
       });
     } catch {
       toast({
