@@ -23,7 +23,11 @@ import {
   LogIn,
   LogOut,
   CreditCard,
-  Clock
+  Clock,
+  GripVertical,
+  ChevronUp,
+  ChevronDown,
+  Trash2
 } from "lucide-react";
 
 const MAX_FILE_SIZE = 300 * 1024 * 1024; // 300MB in bytes
@@ -343,6 +347,58 @@ export default function Home() {
 
   const handleClearTxt = useCallback(() => {
     setTxtFiles([]);
+    setCombinedText("");
+  }, []);
+
+  // Reordering functions
+  const moveFileUp = useCallback((index: number) => {
+    if (index <= 0) return;
+    setTxtFiles(prev => {
+      const newFiles = [...prev];
+      [newFiles[index - 1], newFiles[index]] = [newFiles[index], newFiles[index - 1]];
+      return newFiles;
+    });
+    setCombinedText("");
+  }, []);
+
+  const moveFileDown = useCallback((index: number) => {
+    setTxtFiles(prev => {
+      if (index >= prev.length - 1) return prev;
+      const newFiles = [...prev];
+      [newFiles[index], newFiles[index + 1]] = [newFiles[index + 1], newFiles[index]];
+      return newFiles;
+    });
+    setCombinedText("");
+  }, []);
+
+  const removeFile = useCallback((index: number) => {
+    setTxtFiles(prev => prev.filter((_, i) => i !== index));
+    setCombinedText("");
+  }, []);
+
+  // Drag and drop reordering state
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+
+  const handleFileDragStart = useCallback((index: number) => {
+    setDraggedIndex(index);
+  }, []);
+
+  const handleFileDragOver = useCallback((e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === index) return;
+    
+    setTxtFiles(prev => {
+      const newFiles = [...prev];
+      const draggedFile = newFiles[draggedIndex];
+      newFiles.splice(draggedIndex, 1);
+      newFiles.splice(index, 0, draggedFile);
+      return newFiles;
+    });
+    setDraggedIndex(index);
+  }, [draggedIndex]);
+
+  const handleFileDragEnd = useCallback(() => {
+    setDraggedIndex(null);
     setCombinedText("");
   }, []);
 
@@ -690,7 +746,7 @@ export default function Home() {
                     <div className="w-full space-y-3">
                       <div className="flex items-center justify-between">
                         <span className="text-sm font-medium">
-                          {txtFiles.length} file(s) selected
+                          {txtFiles.length} file(s) selected - Drag to reorder
                         </span>
                         <Button
                           variant="ghost"
@@ -699,14 +755,65 @@ export default function Home() {
                           data-testid="button-clear-txt"
                         >
                           <X className="h-4 w-4 mr-1" />
-                          Clear
+                          Clear All
                         </Button>
                       </div>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="space-y-2 max-h-[400px] overflow-y-auto">
                         {txtFiles.map((f, i) => (
-                          <Badge key={i} variant="secondary">
-                            {f.name}
-                          </Badge>
+                          <div
+                            key={`${f.name}-${i}`}
+                            draggable
+                            onDragStart={() => handleFileDragStart(i)}
+                            onDragOver={(e) => handleFileDragOver(e, i)}
+                            onDragEnd={handleFileDragEnd}
+                            className={`flex items-center gap-2 p-2 rounded-md border transition-all ${
+                              draggedIndex === i
+                                ? "bg-primary/10 border-primary"
+                                : "bg-muted/30 border-muted-foreground/20 hover-elevate"
+                            }`}
+                            data-testid={`file-item-${i}`}
+                          >
+                            <div className="cursor-grab text-muted-foreground hover:text-foreground">
+                              <GripVertical className="h-4 w-4" />
+                            </div>
+                            <Badge variant="outline" className="shrink-0">
+                              {i + 1}
+                            </Badge>
+                            <span className="flex-1 text-sm truncate" title={f.name}>
+                              {f.name}
+                            </span>
+                            <div className="flex items-center gap-1">
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7"
+                                onClick={() => moveFileUp(i)}
+                                disabled={i === 0}
+                                data-testid={`button-move-up-${i}`}
+                              >
+                                <ChevronUp className="h-4 w-4" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7"
+                                onClick={() => moveFileDown(i)}
+                                disabled={i === txtFiles.length - 1}
+                                data-testid={`button-move-down-${i}`}
+                              >
+                                <ChevronDown className="h-4 w-4" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7 text-destructive hover:text-destructive"
+                                onClick={() => removeFile(i)}
+                                data-testid={`button-remove-file-${i}`}
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </div>
                         ))}
                       </div>
                       <Button
