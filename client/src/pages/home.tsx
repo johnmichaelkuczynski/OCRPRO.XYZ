@@ -36,7 +36,8 @@ const ACCEPTED_TYPES = [
   "image/png",
   "image/jpeg",
   "image/jpg",
-  "text/plain"
+  "text/plain",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 ];
 
 export default function Home() {
@@ -165,8 +166,9 @@ export default function Home() {
   });
 
   const validateFile = (file: File): string | null => {
-    if (!ACCEPTED_TYPES.includes(file.type)) {
-      return "Please upload a PDF, PNG, JPG, or TXT file";
+    const isDocx = file.name.toLowerCase().endsWith('.docx');
+    if (!ACCEPTED_TYPES.includes(file.type) && !isDocx) {
+      return "Please upload a PDF, PNG, JPG, TXT, or DOCX file";
     }
     if (file.size > MAX_FILE_SIZE) {
       return "File size must be less than 300MB";
@@ -521,7 +523,7 @@ export default function Home() {
               Extract Text from Documents
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Upload scanned PDFs or images (PNG, JPG) up to 300MB. Our OCR technology will extract all text content for you to copy or download.
+              Upload scanned PDFs, images (PNG, JPG), TXT, or Word documents (DOCX) up to 300MB. Our technology will extract all text content for you to copy or download.
             </p>
           </div>
 
@@ -545,7 +547,7 @@ export default function Home() {
                   id="file-upload"
                   type="file"
                   className="sr-only"
-                  accept=".pdf,.png,.jpg,.jpeg,.txt"
+                  accept=".pdf,.png,.jpg,.jpeg,.txt,.docx"
                   onChange={handleInputChange}
                   disabled={ocrMutation.isPending}
                   data-testid="input-file-upload"

@@ -1,13 +1,13 @@
 # Document Scanner - OCR Text Extraction App
 
 ## Overview
-A web application that extracts text from scanned PDFs and images (PNG, JPG) using Azure Cognitive Services Computer Vision API. Users can upload files up to 300MB via drag-and-drop or file picker, then copy or download the extracted text. Users must pay $1 for 1-day access to use the OCR feature.
+A web application that extracts text from scanned PDFs, images (PNG, JPG), TXT, and Word documents (DOCX) using Azure Cognitive Services Computer Vision API and mammoth. Users can upload files up to 300MB via drag-and-drop or file picker, then copy or download the extracted text. Users must pay $1 for 1-day access to use the OCR feature.
 
 ## Features
 - **Google OAuth login** via passport-google-oauth20 (user's own credentials)
 - **Stripe payment** - $1 for 1-day access to OCR feature
 - Drag-and-drop file upload
-- Support for PDF, PNG, and JPG files (up to 300MB)
+- Support for PDF, PNG, JPG, TXT, and DOCX files (up to 300MB)
 - OCR text extraction using Azure Computer Vision Read API
 - Copy extracted text to clipboard
 - Download extracted text as .txt file

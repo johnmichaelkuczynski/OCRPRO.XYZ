@@ -333,9 +333,15 @@ export async function registerRoutes(
       } else if (mimetype === "text/plain") {
         // TXT files - just return the content directly
         text = buffer.toString("utf-8");
+      } else if (
+        mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+        originalname.endsWith(".docx")
+      ) {
+        const result = await mammoth.extractRawText({ buffer });
+        text = result.value;
       } else {
         return res.status(400).json({
-          message: "Unsupported file type. Please upload PDF, PNG, JPG, or TXT files.",
+          message: "Unsupported file type. Please upload PDF, PNG, JPG, TXT, or DOCX files.",
         });
       }
 
