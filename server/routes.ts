@@ -4,6 +4,8 @@ import multer from "multer";
 import axios from "axios";
 import Stripe from "stripe";
 import mammoth from "mammoth";
+// @ts-ignore - pdf-parse has no proper types
+import { PDFParse } from "pdf-parse";
 import { setupAuth, registerAuthRoutes } from "./replit_integrations/auth";
 import { db } from "./db";
 import { payments } from "@shared/schema";
@@ -100,7 +102,7 @@ async function extractTextFromImage(imageBuffer: Buffer): Promise<string> {
   return extracted.text;
 }
 
-async function extractTextFromPdf(pdfBuffer: Buffer): Promise<{ text: string; pages: number }> {
+async function extractTextFromPdfWithAzure(pdfBuffer: Buffer): Promise<{ text: string; pages: number }> {
   if (!AZURE_ENDPOINT || !AZURE_KEY) {
     throw new Error("Azure Cognitive Services credentials are not configured");
   }
@@ -114,6 +116,8 @@ async function extractTextFromPdf(pdfBuffer: Buffer): Promise<{ text: string; pa
       "Content-Type": "application/pdf",
     },
     timeout: 60000,
+    maxContentLength: Infinity,
+    maxBodyLength: Infinity,
   });
 
   const operationLocation = submitResponse.headers["operation-location"];
@@ -123,6 +127,59 @@ async function extractTextFromPdf(pdfBuffer: Buffer): Promise<{ text: string; pa
 
   const result = await pollForResult(operationLocation);
   return extractTextFromResult(result);
+}
+
+// Azure Read API v3.2 has a 50MB file size limit
+const AZURE_PDF_SIZE_LIMIT = 50 * 1024 * 1024;
+
+async function extractTextFromPdf(pdfBuffer: Buffer, originalname: string): Promise<{ text: string; pages: number }> {
+  console.log(`[pdf] file=${originalname} size=${pdfBuffer.length} bytes`);
+  const startTime = Date.now();
+
+  // Try fast text-only extraction first using pdf-parse.
+  // This ignores all images and just pulls out the embedded text stream,
+  // which is what we want for slide decks / lecture PDFs that are mostly pictures.
+  let pdfParseText = "";
+  let pdfParsePages = 0;
+  let parser: any = null;
+  try {
+    parser = new PDFParse({ data: pdfBuffer });
+    const info = await parser.getInfo();
+    pdfParsePages = info?.total || info?.numpages || 0;
+    const textResult = await parser.getText();
+    pdfParseText = (textResult?.text || "").trim();
+    console.log(`[pdf] pdf-parse extracted ${pdfParseText.length} chars from ${pdfParsePages} pages in ${Date.now() - startTime}ms`);
+  } catch (err: any) {
+    console.warn(`[pdf] pdf-parse failed: ${err.message}`);
+  } finally {
+    try { await parser?.destroy(); } catch {}
+  }
+
+  // Heuristic: if pdf-parse got a reasonable amount of text (at least 50 chars
+  // per page on average, or any text at all for very large/scanned PDFs that
+  // exceed Azure's limits), use it. Otherwise it's a scanned/image PDF and we
+  // need OCR.
+  const avgCharsPerPage = pdfParsePages > 0 ? pdfParseText.length / pdfParsePages : 0;
+  const tooBigForAzure = pdfBuffer.length > AZURE_PDF_SIZE_LIMIT;
+
+  if (pdfParseText.length > 0 && (avgCharsPerPage >= 50 || tooBigForAzure)) {
+    return { text: pdfParseText, pages: pdfParsePages || 1 };
+  }
+
+  // Fall back to Azure OCR for scanned/image-only PDFs.
+  if (tooBigForAzure) {
+    if (pdfParseText.length > 0) {
+      return { text: pdfParseText, pages: pdfParsePages || 1 };
+    }
+    throw new Error(
+      `This PDF is ${(pdfBuffer.length / 1024 / 1024).toFixed(1)}MB and appears to be image-based. ` +
+      `OCR for image PDFs is limited to ${AZURE_PDF_SIZE_LIMIT / 1024 / 1024}MB. ` +
+      `Please split the PDF into smaller files.`
+    );
+  }
+
+  console.log(`[pdf] falling back to Azure OCR (image-based PDF)`);
+  return await extractTextFromPdfWithAzure(pdfBuffer);
 }
 
 // Helper function to check if user has valid access
@@ -321,7 +378,7 @@ export async function registerRoutes(
       let pages = 1;
 
       if (mimetype === "application/pdf") {
-        const result = await extractTextFromPdf(buffer);
+        const result = await extractTextFromPdf(buffer, originalname);
         text = result.text;
         pages = result.pages;
       } else if (

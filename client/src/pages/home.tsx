@@ -142,9 +142,25 @@ export default function Home() {
         body: formData,
       });
 
+      const contentType = response.headers.get("content-type") || "";
+      const isJson = contentType.includes("application/json");
+
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || "Failed to process file");
+        if (isJson) {
+          const error = await response.json();
+          throw new Error(error.message || `Server error (${response.status})`);
+        }
+        const text = await response.text();
+        const snippet = text.slice(0, 200).replace(/<[^>]+>/g, "").trim();
+        throw new Error(
+          response.status === 504 || response.status === 502
+            ? "The server took too long to process this file. Try a smaller PDF or split it into parts."
+            : `Server error (${response.status})${snippet ? ": " + snippet : ""}`
+        );
+      }
+
+      if (!isJson) {
+        throw new Error("Unexpected response from server. Please try again.");
       }
 
       return response.json();
