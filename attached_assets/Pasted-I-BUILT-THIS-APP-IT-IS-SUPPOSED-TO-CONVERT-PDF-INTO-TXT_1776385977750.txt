@@ -1,0 +1,36 @@
+I BUILT THIS APP. IT IS SUPPOSED TO CONVERT PDF INTO TXT VERY QUICKLY (WHICH IT ALMOST ALWAYS DOES). BUT I AM HITTING SORT OF WALL HERE. I HAVE BEEN TRYING TO GET IT TO CONVERT CLASS SLIDES (IN PDF FORM) INTO TXT DOCS. (I DON'T CARE ABOUT THE PICTURES IN THE PDFS, JUST THE WORDS.) AND MY APP IS CLEARLY CHOKING ON THE PICTURES. WHAT DO I TELL THE REPLIT AGENT
+
+8:30 PM
+Looking at this error, the issue is clear — and the fix is specific.
+
+What's actually happening
+The error Unexpected token '<', "<html><hea"... is not valid JSON means your frontend sent the PDF to your server, the server returned an HTML error page (probably a 500 or 502), and your frontend tried to JSON.parse() it. So this is not really a "PDF parsing" error message — it's a symptom. The server crashed or timed out, and you're seeing the HTML error page bleed through.
+
+For a 52.6 MB lecture slide PDF, the likely culprits are:
+
+Server timeout. Image-heavy slide decks take much longer to process than text PDFs. Your request is exceeding the platform's HTTP timeout (Replit's default is ~60s for web requests on many setups).
+Memory blowup. If your extractor is rasterizing pages or loading all images into memory before discarding them, a 52 MB deck can balloon to multi-GB RAM usage and OOM-kill the process.
+Wrong extraction path. Many PDF libraries (pdf-parse, pdf.js) try to process images even when you only want text, which is wasted work and a common crash point on slide decks.
+What to tell the Replit agent
+Here's a prompt you can paste directly:
+
+My PDF-to-TXT converter works fine on normal PDFs but fails on large image-heavy slide decks (e.g., a 52 MB lecture PDF). The frontend error is Unexpected token '<', "<html><hea"... is not valid JSON, which means the server is returning an HTML error page instead of JSON — likely a timeout or OOM crash during extraction.
+
+I only need the text from these PDFs. I do not want images, OCR, or rasterization. Please make the following changes:
+
+Switch to a text-only extraction path. Use pdfjs-dist with getTextContent() per page, or if on Python, use pypdf / pdfplumber in text-only mode. Do not use any library call that decodes, extracts, or renders images (e.g., no getOperatorList, no page.extract_images(), no pdf2image, no Poppler rasterization).
+Stream page-by-page, don't buffer. Loop through pages, extract text, append to an output buffer or write to a temp file, and explicitly release the page object each iteration so images get garbage collected. Never hold the whole parsed PDF tree in memory.
+Wrap extraction in try/catch per page. If one page fails, skip it and continue — don't let a single bad page kill the whole job. Log which pages were skipped.
+Fix the frontend error display. Before calling response.json(), check response.ok and response.headers.get('content-type'). If the response isn't JSON, read it as text and surface the actual server error to the user instead of the misleading "Unexpected token '<'" message.
+Increase the server timeout and body limit. Raise the Express/Flask request timeout to at least 300 seconds for this endpoint, and ensure the body-parser/multer limit is ≥ 300 MB to match the UI.
+For very large PDFs, process async. If the file is over ~30 MB or ~100 pages, return a job ID immediately and let the frontend poll a /status/:id endpoint. This avoids HTTP timeouts entirely.
+Please show me the exact lines you're changing in the extraction module and the upload handler.
+
+One diagnostic to run first
+Before the agent rewrites anything, have it add a single line at the top of the extraction function:
+
+js
+console.log(`[extract] file=${filename} size=${sizeBytes} pages=${pageCount}`);
+…and log timing at the end. If you see the log start but no "done" line, it's a timeout/OOM. If you never see the start line, it's failing at upload/parse. That tells you whether to prioritize fix #1 (extraction) or fix #5 (server limits) first.
+
+The "choking on pictures" intuition is right — but the specific mechanism is almost certainly that a library is trying to do something with those images (decode, count, index) when all you want is the text stream. Forcing a text-only path is the real fix.

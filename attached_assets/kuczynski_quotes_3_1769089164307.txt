@@ -1,0 +1,622 @@
+kuczynski | Content-externalism is the doctrine that what a person is thinking is constitutively dependent on facts about his environment | Content Externalism
+kuczynski | Two brain-states can be qualitatively identical, leaving aside facts about their causal origins, and yet have different contents | Content Externalism
+kuczynski | Content-externalism and semantic-externalism are distinct doctrines: the first is about what people think, the second is about what our words mean | Content vs Semantic Externalism
+kuczynski | A failure to distinguish between content-externalism and semantic-externalism has led to much confusion in contemporary thought | Content vs Semantic Externalism
+kuczynski | Semantic-externalism is unqualifiedly true, even though content-externalism is unqualifiedly false | Content vs Semantic Externalism
+kuczynski | So long as we confine ourselves to the regions occupied by their bodies, there is nothing that distinguishes Max from Twin-Max, making them physically and psychologically identical | Content Externalism
+kuczynski | To the extent that mental content must be understood along content-externalist lines, it is without any psychological significance | Content Externalism
+kuczynski | Genuine differences destroy parallelism and disrupt relational facts, but the supposed differences between Max and Twin-Max are completely non-disruptive | Content Externalism
+kuczynski | The differences between Max and Twin-Max are like those between the worlds in Poincare's thought-experiment regarding absolute size | Content Externalism
+kuczynski | The primary purpose of language is to convey what is relevant, where relevance is to be understood in pragmatic, not philosophical, terms | Language and Meaning
+kuczynski | Given the practical nature of language, there is no reason to expect that our locutions will always reproduce the delicate distinctions needed for solutions to recherché questions of logic and epistemology | Language and Meaning
+kuczynski | Kripke made a strong case that proper names are not synonymous with any definite description and are directly referential | Reference and Naming
+kuczynski | One can think about Socrates without knowing of any description that singles him out | Conception and Reference
+kuczynski | A referring term refers to its object because a certain kind of causal relation holds between tokens of that term and that object | Causal Theory of Reference
+kuczynski | The causal story is only a chapter in the descriptive story, not the whole narrative of reference | Causal Theory of Reference
+kuczynski | Even though one learns what a name refers to through descriptive or ostensive means, the name itself remains a mere label | Reference and Naming
+kuczynski | What your visual experience, taken by itself, tells you is going to be a function solely of facts about the physical properties of the situation right in front of you | Perception and Content
+kuczynski | Your visual experience, by itself, cannot possibly register the fact that it is x3, as opposed to x24, that you are seeing | Perception and Content
+kuczynski | Mary is no more a part of your visual experience than Twin-Mary or any other Mary-impostor | Perception and Content
+kuczynski | Content-externalism cannot accommodate the obvious fact that perceptions with different objects can have a great deal of representational content in common | Content Externalism
+kuczynski | Numerically different objects, qualitatively different contents—this is the essence of the content-externalist's view | Content Externalism
+kuczynski | What the content-externalist calls identity-dependent content is actually not content but meta-content | Content vs Meta-content
+kuczynski | Sentence-tokens, not sentence-types, bear propositions | Semantics
+kuczynski | The semantic content of a sentence-type is a rule that assigns a proposition to any given token of that type | Semantics
+kuczynski | Two tokens that have the very same propositions for their literal meanings may communicate very different propositions | Semantics and Communication
+kuczynski | Many apparent substitution-failures involve no change in literal meaning and are to be understood pragmatically in terms of pre-semantics | Substitutivity and Meaning
+kuczynski | Russell's Theory of Descriptions, though ingenious, has non-trivial problems that our theory does not share | Theory of Descriptions
+kuczynski | Frege's view that definite descriptions refer to their senses in propositional attitude contexts is deeply implausible and ad hoc | Frege and Reference
+kuczynski | There is no such thing as the sense of the sense of a sense, making Frege's hierarchy untenable | Frege's Senses
+kuczynski | Proper names are rigid designators: given the semantics of English, it is fixed what those expressions refer to | Rigid Designation
+kuczynski | When identity holds, it holds necessarily—nothing could possibly fail to be itself | Necessity of Identity
+kuczynski | There are necessary a posteriori truths, showing that not all necessity is analytic or a priori | A Posteriori Necessity
+kuczynski | The argument for a posteriori necessity involves a major non-sequitur when it confuses literal meaning with communicated meaning | A Posteriori Necessity
+kuczynski | What is communicated by a sentence-token is a function not merely of its literal meaning, but of the information through which one ascertains its literal meaning | Meaning and Communication
+kuczynski | We access the meaning of tokens through existence claims, which is why tokens communicate more than their bare literal content | Meaning and Communication
+kuczynski | Having discriminating knowledge of an object is different from knowing that object's identity | Conception vs Identification
+kuczynski | Being able to have thoughts about x is different from knowing who or what x is | Conception vs Identification
+kuczynski | The discriminative knowledge needed to grasp singular propositions is prior to a knowledge of the object's identity | Conception and Knowledge
+kuczynski | The concept of knowing-who is contextual—the sentence can be true in one context and false in another | Knowing-Who
+kuczynski | Evans is right that demonstrative identification requires uniquely discriminating knowledge, but wrong that this knowledge is not descriptive | Evans and Conception
+kuczynski | Demonstrative thoughts are not Russellian even though demonstrative utterances are | Demonstratives
+kuczynski | There is no thought that you are having in the hallucinatory scenario that you are not also having in the veridical one | Mental Content
+kuczynski | If content-externalism is right, then for some x, your knowledge that you are thinking about x is no more certain than your knowledge about remote regions of the cosmos | Self-Knowledge
+kuczynski | Content-externalism has the counter-intuitive consequence that you don't know the identities of your conscious thoughts with any more certainty than you know about the external world | Self-Knowledge
+kuczynski | If you are consciously thinking a thought, you do know with a special certainty that you are thinking that thought | Self-Knowledge
+kuczynski | Burge's argument that self-fulfilling thoughts guarantee self-knowledge presupposes conditions that content-externalism cannot guarantee are met | Burge on Self-Knowledge
+kuczynski | There are situations epistemically just like ours where, if externalism is right, we fail to have the thoughts we take ourselves to have | Self-Knowledge
+kuczynski | When we want to assess whether content-externalism is compatible with self-knowledge, we must consider all epistemically identical worlds | Self-Knowledge
+kuczynski | Content-externalism's problem is not just that it violates Cartesian certainty about having thoughts, but about which thoughts we are having | Self-Knowledge
+kuczynski | The causal efficacy of mental content cannot be established by tautologous consequences of our definitions | Mental Causation
+kuczynski | If the content-externalist is right, X's being a constituent of mental content supervenes on processes that went out of existence before humans existed | Mental Causation
+kuczynski | There is an important difference between X being a cause of thought and X's being a constituent of mental content being a cause of thought | Mental Causation
+kuczynski | Jackson and Pettit were misled by failing to distinguish between logical and causal explanations | Program Causation
+kuczynski | The connection content-externalism establishes between mental content and effects is logical, not causal | Mental Causation
+kuczynski | Formal truth is semantic truth—there is no notion more semantic than formal truth | Formal Truth
+kuczynski | A statement is formally true or formally false exactly if its truth-value can be computed on the basis of the rules that assign it meaning | Formal Truth
+kuczynski | Unless a creature is responding to the semantic properties of symbols, it is not responding to forms in any relevant sense | CTM Critique
+kuczynski | CTM involves a misunderstanding of the concept of syntactic form and a failure to register the ambiguity of the word form | CTM Critique
+kuczynski | There is a mechanical procedure for deciding whether some sentences are true, but this mechanicality is semantic, not morphological | CTM Critique
+kuczynski | A symbol-token has both morphological and socio-psychological components | Symbol Theory
+kuczynski | The morphological component has done its job if it directs the auditor towards the right socio-psychological component | Symbol Theory
+kuczynski | Whether a given sound betokens this or that symbol is a function not of its morphology alone but of the relation of morphology to context | Symbol Theory
+kuczynski | Two morphologically identical sounds can betoken different words, and two morphologically very different sounds can betoken the same word | Symbol Theory
+kuczynski | A symbol-type is a relation between morphology and context; a symbol-token is an instance of such a relation | Symbol Theory
+kuczynski | Because symbols are relations between morphology and context, it is not coherent to speak of morphologically petrified languages | Symbol Theory
+kuczynski | Symbolic manipulations can never track semantics in virtue of being morphology-driven | CTM Critique
+kuczynski | Because symbols are relations between morphology and context, mere morphology-manipulation isn't symbol-manipulation | CTM Critique
+kuczynski | CTM is no more consistent with the causal efficacy of the mental than content-externalism | CTM Critique
+kuczynski | Fodor's view that thinking consists in manipulating shapes fails because expression-types are not shapes | CTM Critique
+kuczynski | To compute is to manipulate symbol-tokens, but symbol-tokens are not instances of shapes | CTM Critique
+kuczynski | If Mentalese symbols get their meaning from causal chains going back thousands of years, CTM becomes committed to the most aggressive form of content-externalism | CTM Critique
+kuczynski | The distinction between reference-fixing and meaning-giving has far-reaching implications for scientific methodology | Reference and Meaning
+kuczynski | An operational definition can fix the referent of a term without giving its meaning | Operational Definition
+kuczynski | The term operationalism is ambiguous between the reference-fixing and meaning-giving senses of define | Operationalism
+kuczynski | The hypothesis that someone is following a rule is confirmationally different from the hypothesis that they are merely acting in accordance with it | Rule-Following
+kuczynski | If somebody grasps arithmetic, that knowledge will be expressed in ways other than manipulating the right symbols | Rule-Following
+kuczynski | Calculators don't really add—their behavior is not like that of someone who truly grasps arithmetic | Rule-Following
+kuczynski | Concepts and aptitudes are not frozen—if you grasp one concept, you necessarily grasp various others | Holism of Concepts
+kuczynski | Calculators are not themselves performing arithmetical operations, but their behavior is still appropriately understood in terms of such operations | Calculators and Computation
+kuczynski | A person can use a calculator to add numbers—the activities of calculators are constitutive of actual computation even though calculators do not themselves compute | Calculators and Computation
+kuczynski | The fact that calculators act like something that computes corresponds to the fact that something really is computing—the human using the calculator | Calculators and Computation
+kuczynski | A language is a set of semantic rules, and a set of semantic rules is not a set of platonic entities | Nature of Language
+kuczynski | A set of semantic rules is constituted by psychological entities—understandings that hold among people | Nature of Language
+kuczynski | The psychological states that immediately cause my utterances are not constituents of the English language | Language and Psychology
+kuczynski | Language-use is causally responsible for language-change, but use is not constitutive of language-change | Language Change
+kuczynski | Events are hyper-changes—changes in the manner in which things change | Metaphysics of Events
+kuczynski | A language-change is not a structure-internal event but one that alters the relevant structure | Language Change
+kuczynski | Lewis is right that a language is a set of semantic rules but wrong about what semantic rules are | Nature of Language
+kuczynski | Langue and parole are both spatiotemporal entities—not all spatiotemporal entities are events | Saussure's Distinction
+kuczynski | Propositions can be identified with sets of properties, and a proposition's being true with all its members being instantiated | Propositional Structure
+kuczynski | The problem of the unity of the proposition can be solved by understanding propositions as structured sets of properties | Propositional Structure
+kuczynski | The concept of propositional constituency is to be understood in terms of the concept of dependence | Propositional Structure
+kuczynski | X is a constituent of proposition Y iff Y depends on X in a certain way | Propositional Structure
+kuczynski | Thought is prior to language—linguistic meaning presupposes the existence of thought | Thought and Language
+kuczynski | There is non-linguistic communication—infants and non-human animals can make themselves understood | Non-Linguistic Communication
+kuczynski | For something to be a symbol of a public language, there must be success conditions associated with its use | Symbol and Success
+kuczynski | The existence of thought is a prerequisite to that of anything resembling a symbol of a public language | Thought and Language
+kuczynski | Logical form is very different from grammatical form—where natural languages are concerned, they pull apart | Logical vs Grammatical Form
+kuczynski | There is no morphological characterization of syntax, no syntactic characterization of logic, no morphological characterization of logic | Form and Logic
+kuczynski | A morphology-driven manipulation of symbols is not necessarily one that tracks either syntactic or logical form | Form and Logic
+kuczynski | Where there are indexicals, there is necessarily a divergence between logical and syntactical form | Indexicals and Form
+kuczynski | If our thoughts are mediated by some kind of language, the expressions of that language are replete with indexicals | Indexicals and Thought
+kuczynski | Even granting all of CTM's assumptions, it fails to account for the fact that our cognitive activity embodies sensitivity to logical form | CTM Critique
+kuczynski | We must distinguish between analytic truth and formal truth—not all analytic truths are formally true | Analytic vs Formal Truth
+kuczynski | A sentence is logically true exactly if its truth is a theorem of the semantic rules of the language to which it belongs | Logical Truth
+kuczynski | Any token of I am here now is logically true even though it encodes an a posteriori, contingent proposition | Logical Truth
+kuczynski | Syntax is an aspect of meaning—a sentence-token's syntax lies in how it means what it means | Syntax and Semantics
+kuczynski | Davidson's view that one must know a language to think is incompatible with the compositional nature of meaning | Davidson Critique
+kuczynski | Linguistic competence can no more be explained without positing cognitive processes than Brownian motion can be explained without molecules | Chomsky's Argument
+kuczynski | Speaker's meaning presupposes conventional meaning—I cannot mean P by noise N unless I believe N already means P | Speaker's Meaning
+kuczynski | Knowledge of language facilitates thought but cannot be constitutive of the ability to think, since thinking is prerequisite to learning a language | Thought and Language
+kuczynski | The photograph model of conception—that concepts relate to objects as photographic plates relate to causes—must be rejected | Conception
+kuczynski | One's grasping any one concept involves grasping various others—conceptual atomism is false | Holism of Concepts
+kuczynski | A concept of x cannot be realized wholly by a causal relation to x | Conception
+kuczynski | Frege eloquently defended the point that there was something to be true or false prior to thought | Propositions and Thought
+kuczynski | Pre-linguistic creatures can have true and false mental contents | Pre-Linguistic Thought
+kuczynski | The process of learning what a name refers to—whether by description, ostension, or simply picking it up from context—still leaves the name as a mere label | Reference and Naming
+kuczynski | The causal chain connecting our use of a name to its original bearer does not make the name synonymous with any description | Causal Theory of Reference
+kuczynski | You never just see Smith—you see a thing embedded in a situation whose perceptual representation is replete with descriptive content | Perception and Description
+kuczynski | Content-internalism holds that mental content is fixed by intrinsic properties of the thinker, independent of external relations | Content Internalism
+kuczynski | Semantic externalism about linguistic meaning is compatible with internalism about mental content | Semantic Externalism
+kuczynski | The information that enables you to associate a name with the right object has an existential form | Reference and Existence Claims
+kuczynski | Recognition of identities like Hesperus equals Phosphorus involves the convergence of two knowledge-streams | Identity and Knowledge
+kuczynski | The content of visual experience is existential in character—it cannot be given by a mere noun-phrase | Perception and Content
+kuczynski | Perceptions make us aware of objects by apprising us of existence-claims that those objects satisfy | Perception and Knowledge
+kuczynski | Disjunctivism—the view that perceptions of different objects share no content—is demonstrably false | Disjunctivism
+kuczynski | Two perceptions can have dramatically different objects yet share a great deal of existential information | Perception and Content
+kuczynski | The externalist's response that mental content encompasses remote regions of space has consequences too revisionist to accept | Content Externalism
+kuczynski | You cannot just see Smith—you must see a thing embedded in a situation replete with descriptive content | Perception and Description
+kuczynski | The content of perception, so far as it can be expressed in language, is given by a sentence, not a noun-phrase | Perception and Content
+kuczynski | When you see a star that went out of existence millions of years ago, the externalist must say your perception lacks complete content—but your perception does have complete content | Content Externalism
+kuczynski | The contextualist nature of the expression knowing-who explains apparent paradoxes about identity and knowledge | Knowing-Who
+kuczynski | You can fail to know of your kindly neighbor that he is a crime lord only because you can already have thoughts about him | Conception vs Identification
+kuczynski | Being able to think about x is different from knowing who or what x is, even allowing for the contextual nature of the latter | Conception vs Identification
+kuczynski | Evans correctly distinguishes facts about our concepts from facts about what is represented within them | Evans on Conception
+kuczynski | Not every fact about a concept is represented within that concept | Conception
+kuczynski | Evans' argument against descriptivism fails because perceptions make us aware of objects through existence-claims | Evans Critique
+kuczynski | If content-externalism is right, there is a kind of cognitive blank in the hallucinatory case where there would be a thought in the veridical case | Content Externalism
+kuczynski | The same psychological properties can be had in situations where different thoughts are had, on the externalist view—but this seems wrong | Content Externalism
+kuczynski | There is a certainty that can attach to knowledge of what we are consciously thinking that cannot attach to knowledge of the external world | Self-Knowledge
+kuczynski | Burge's argument about self-fulfilling thoughts establishes certainty only in worlds where we already have the relevant thoughts | Burge Critique
+kuczynski | Your counterpart in a Descartes-free world is wrong to attribute thoughts about Descartes to himself | Self-Knowledge
+kuczynski | Burge's argument begs the question by restricting attention to worlds where the relevant object has been loaded into our thoughts | Burge Critique
+kuczynski | Content-externalism makes it impossible to know with Cartesian certainty whether one is having a thought at all | Self-Knowledge
+kuczynski | The externalist's guarantee that mental content has effects is logical, not causal—a tautologous consequence of definitions | Mental Causation
+kuczynski | When we assess causal potency, we don't want to study the logical consequences of our definitions | Mental Causation
+kuczynski | There is no time at which X's being a constituent of Smith's mental content exists, given that X and Smith are separated by millions of years | Mental Causation
+kuczynski | Not every non-empty noun-phrase denotes a state of affairs in the causal sense | Mental Causation
+kuczynski | Somebody's coughing is not a state of affairs—you never just hear someone coughing, you hear some specific person doing so | States of Affairs
+kuczynski | The flame is contemporaneous with events causally effective with respect to the heating—but the star ceased to exist millions of years ago | Mental Causation
+kuczynski | Jackson and Pettit over-extend the term program-cause to denote two quite different concepts | Program Causation
+kuczynski | CTM conflates different senses of form—morphological, syntactic, and semantic | CTM Critique
+kuczynski | The ambiguity of form lies at the root of the appeal of CTM | CTM Critique
+kuczynski | Symbol-tokens are instances of relations between morphology and context, not mere shapes | Symbol Theory
+kuczynski | Given any language, the morphologies of inscriptions leave it entirely open what expressions have been tokened | Symbol Theory
+kuczynski | We cannot even coherently conceive of a language where morphology alone determines what expression has been tokened | Symbol Theory
+kuczynski | Even if there is only one way to token a language's symbols in practice, this cannot be an inherent fact about that language | Symbol Theory
+kuczynski | Because symbol-tokens are relational, mere morphology-manipulation cannot constitute symbol-manipulation | CTM Critique
+kuczynski | The information that is useful to an organism's survival is necessarily expressed by sentences with indexical components | Indexicals and Thought
+kuczynski | Only thoughts of a strictly mathematical or philosophical nature can be expressed by indexical-free sentences | Indexicals and Thought
+kuczynski | A token of if it is warm here, then it is warm here may encode a valid, invalid, or merely inductive argument depending on whether the indexicals co-refer | Indexicals and Logic
+kuczynski | Even granting isomorphism between morphology and syntax, form-driven manipulation of symbols is more likely than not to fail to constitute valid reasoning | CTM Critique
+kuczynski | Quine's analysis of logical truth fails because sentence-tokens like I am here now are naturally described as logically true | Logical Truth
+kuczynski | A sentence is logically true not because of reinterpretations of non-logical constants but because its truth follows from semantic rules | Logical Truth
+kuczynski | The operational definition of a term and the semantic meaning of that term are different things | Operational Definition
+kuczynski | Hempel's arguments against operationalism are cogent when define is taken in the meaning-giving sense | Operationalism
+kuczynski | The hypothesis that Smith is following rule R has predictive implications not had by the hypothesis that Smith merely accords with R | Rule-Following
+kuczynski | After a certain point, it becomes only a skeptical possibility that Smith wasn't actually following the relevant rules | Rule-Following
+kuczynski | Searle is right that calculators don't calculate, but wrong that acting like something that follows rules is little evidence of rule-following | Rule-Following
+kuczynski | Timmy who can manipulate arithmetic symbols but cannot answer questions about shoes and houses does not really grasp arithmetic | Rule-Following
+kuczynski | Calculators' behavior is more like that of the symbol-manipulating Timmy than like genuine arithmeticians | Calculators and Computation
+kuczynski | The rule-following to which the calculator's behavior corresponds can be off-loaded onto the person behind the calculator | Calculators and Computation
+kuczynski | If our behavior suggests rule-following involving concepts like NP-postposing, that rule-following must be attributed to us | Rule-Following
+kuczynski | A set of semantic rules is constituted by psychological facts and the social and environmental facts in which they are embedded | Nature of Language
+kuczynski | The mental state that precipitated my utterance is not constitutive of English but is caused by the existence of English | Language and Psychology
+kuczynski | Some psychological states are constitutive of language—but not the immediate antecedents of utterances | Language and Psychology
+kuczynski | Parole is language-use, not language-change—they must not be conflated | Language Change
+kuczynski | A set of semantic rules is a structure, and a usage of an expression is a structure-internal event | Language Change
+kuczynski | Events that constitute language-change are not constitutive of any existing set of semantic rules | Language Change
+kuczynski | Lewis is wrong to think that a language is a set of function-theoretic pairings of properties with physical tokens | Nature of Language
+kuczynski | Linguistic meaning never refers to purely function-theoretic pairings | Nature of Language
+kuczynski | A proposition's existence presupposes that of its constituents, and its truth depends on facts about them | Propositional Structure
+kuczynski | Where propositions are concerned, the concept of constituency is to be understood in terms of dependence | Propositional Structure
+kuczynski | By identifying propositions with sets of properties, we can give clear answers to questions about propositional structure | Propositional Structure
+kuczynski | The unity of the proposition—how constituents are combined—can be understood through relations of dependence | Propositional Structure
+kuczynski | There is some kind of pre-verbal communication—infants and animals make themselves understood within limits | Non-Linguistic Communication
+kuczynski | Language extends the scope and precision of existing non-verbal ways of communicating | Language and Communication
+kuczynski | For something to be a symbol, there must be success conditions—this presupposes thought | Symbol and Success
+kuczynski | The symbolic conception of thought is vacuous because it strips symbols of their essentially intentional character | CTM Critique
+kuczynski | If thought is prior to language, then the symbolic conception of thought is viciously regressive | CTM Critique
+kuczynski | Gricean theories of meaning cannot explain how sentences that have never been uttered already have definite meanings | Grice Critique
+kuczynski | The compositional nature of sentence-meaning is incompatible with purely use-theoretic accounts of meaning | Compositionality
+kuczynski | The problem with identifying language with function-theoretic pairings is that it makes language a platonic entity when it is spatiotemporal | Nature of Language
+kuczynski | Saussure's distinction between langue and parole is legitimate—both are spatiotemporal entities | Saussure's Distinction
+kuczynski | Languages as sets of semantic rules are distinct from the historical sequences of such rule-sets | Nature of Language
+kuczynski | The expressivity of natural language far exceeds what can be captured by any purely morphological characterization | Language and Form
+kuczynski | Mental states have content that is independent of facts about the causal origins of those states | Content Internalism
+kuczynski | The concept of mental content must be distinguished from that of meta-content—what a representation is about versus facts about the representation | Content vs Meta-content
+kuczynski | Conception is essentially descriptive in character, even though referring expressions are directly referential | Conception and Reference
+kuczynski | The ability to think is a prerequisite to learning a language, not a consequence of it | Thought and Language
+kuczynski | A theory is a way of modeling data, and in philosophy these data usually consist of intuitions | Philosophical Method
+kuczynski | The differences cited by the content-externalist in defense of his position presuppose the truth of that position and thus don't provide independent support for it | Content Externalism Critique
+kuczynski | There is a kind of representational content that Max and Twin-Max have in common that is not affected by the differences between their two worlds | Narrow Content
+kuczynski | Narrow content is content that cannot differ between qualitatively identical individuals, leaving aside facts about the origins of their conditions | Narrow Content
+kuczynski | Hard-line content-externalists like Burge, Evans, and McDowell deny that there is such a thing as narrow content | Hard-line Externalism
+kuczynski | Fodor's view is that for x to have a concept of y is for some of x's states to have been caused, in a certain way, by states of affairs involving y | Fodor on Concepts
+kuczynski | Fodor's analysis of conception involves my having a concept of Socrates being identical with my being on the receiving end of a causal chain beginning with Socrates | Causal Conception
+kuczynski | CTM, SCT, and hard-line content-externalism all implicitly presuppose the truth of Fodor's causal analysis of conception | Fodor's Analysis
+kuczynski | If one has a concept of y, it would seem one must already have various other concepts—conceptual atomism seems absurd | Conceptual Holism
+kuczynski | Given a strictly causal analysis of conception, an otherwise conceptless being like a photographic plate could have a concept of Socrates | Conceptual Atomism Critique
+kuczynski | The information encoded in a perception isn't neatly separable from background information, but there is still a clear line | Perception and Background
+kuczynski | Perceptual content is existential: there is an object x of such and such a shape sitting next to an object y of thus and such a shape | Perceptual Content
+kuczynski | To say that perceptual content is existential is not to say it consists of propositions—intuition resists exhausting perception with propositions | Perceptual Content
+kuczynski | Content-externalism involves a failure to distinguish between content and truth-maker | Content vs Truth-maker
+kuczynski | For a visual experience to be a perception of x, x must be part of the state of affairs that causes that experience, but x need not be a constituent of the content | Perception and Causation
+kuczynski | By itself, no visual experience can tell you that it is x specifically, as opposed to some x-look-alike, that caused it | Perceptual Limits
+kuczynski | Ostensive definitions work by way of knowledge of uniquely individuating descriptions | Ostensive Definition
+kuczynski | The causal connection between you and Fred corresponds to context-sensitive terms in the description through which you grasp him | Causal Connection
+kuczynski | In any case where a causal connection is constitutive of a concept, that connection is embedded in knowledge of some description the object uniquely satisfies | Causal-Descriptive Integration
+kuczynski | You can acquire the ability to use a name meaningfully without ever having been given an ostensive or descriptive definition of it | Picking Up Names
+kuczynski | Even when picking up a name from context, you know of some existence claim that is uniquely satisfied | Context and Reference
+kuczynski | Socrates' existence must supervene on states of affairs that are not object-involving—ultimately on instances of properties | Metaphysics of Individuals
+kuczynski | Roughly speaking, Socrates is a series of instances of properties | Property-Instance Theory
+kuczynski | In any world where Socrates exists, his existence supervenes either on S or on some series only slightly different from S | Essential Origins
+kuczynski | Whether one grasps a purely descriptive proposition supervenes on one's non-relational properties | Supervenience of Grasp
+kuczynski | We can grasp a proposition whose truth presupposes Socrates' existence, contrary to Russell's claim about acquaintance | Against Russell
+kuczynski | Socrates' existence in world w is a condition, but not a pre-condition, for the proposition's being true in w | Conditions vs Preconditions
+kuczynski | Where sentences containing indexicals are concerned, it is de rigueur to distinguish between type-meaning and token-meaning | Types and Tokens
+kuczynski | Given any sentence-type containing a tensed verb, the semantic content is a function that assigns propositions to tokens | Tense and Semantics
+kuczynski | The distinction between sentence-types and sentence-tokens must be made universally | Universal Type-Token Distinction
+kuczynski | A language is a means of communication, and the things that are heard, spoken, read, and written are tokens | Language as Communication
+kuczynski | What is literally meant by an utterance must be distinguished from the information uploaded in computing its literal meaning | Pre-semantics
+kuczynski | When we want to know what is communicated by statements, we must look at the epistemology of their semantics, not just the propositions | Communication and Epistemology
+kuczynski | The concept of necessary a posteriori truth is a conflation of literally meant analytic truth and pre-semantically communicated contingent truth | A Posteriori Necessity Critique
+kuczynski | What is literally meant by Hesperus is Phosphorus is analytic, but what is communicated is a posteriori—these must not be conflated | Hesperus-Phosphorus
+kuczynski | For a proposition to be analytic is not for no empirical work to be needed to grasp its constituents, but for no empirical work to be needed to determine its truth-value once grasped | Analyticity
+kuczynski | The idea of necessary a posteriori truth embodies a failure to distinguish semantics from pre-semantics | Necessary A Posteriori Critique
+kuczynski | Even in paradigm cases of concepts having causal components, the content does not have the object as a constituent | Causal Concepts
+kuczynski | A concept of Fred consists in knowledge of a description that Fred uniquely satisfies and that is not object-involving with respect to Fred | Concept Structure
+kuczynski | Having a concept of x at time t involves knowing the truth of some existence claim in an interlocking series | Concepts as Knowledge-Series
+kuczynski | A concept of x is identical with or supervenient on a knowledge-stream of interlocking existence claims | Knowledge-Stream Theory
+kuczynski | One's concept of Fred is numerically identical with the concept one had of him days ago, despite changes in the sustaining descriptions | Concept Identity
+kuczynski | To have a concept of x is to have discriminating knowledge of x, as Evans puts it | Discriminating Knowledge
+kuczynski | A concept evolves continuously, just as a person or a plant does | Concept Evolution
+kuczynski | Two different knowledge-streams can enable one to think about the same object, explaining how one can have two concepts of the same thing | Multiple Concepts
+kuczynski | Recognition of identity like Fred equals Barney involves the convergence of two knowledge-streams | Identity Recognition
+kuczynski | Understanding a sentence-token always involves having some kind of knowledge of the proposition it encodes, but often by description, not acquaintance | Understanding and Knowledge
+kuczynski | One can believe a proposition to be true without grasping exactly that proposition—grasping involves singling out | Belief vs Grasp
+kuczynski | Evans is wrong to think understanding demonstrative utterances consists in being acquainted with singular propositions | Evans Critique
+kuczynski | Any proposition object-involving with respect to O can only be known by description, not by acquaintance | Knowledge by Description
+kuczynski | Because linguistic communication involves identity of truth-maker, not proposition, people can communicate despite vast biographical differences | Communication and Truth-makers
+kuczynski | Language cuts through biographical differences because linguistic communication is about what is external, not internal processes | External Communication
+kuczynski | Given any two people who know what sad means, they will differ in the specifics of sensory information and internal states correlated | Semantic Knowledge Variation
+kuczynski | Our model accommodates that sentences can unambiguously transmit information even though speakers access meaning through different bodies of information | Semantic Transmission
+kuczynski | Nothing that Freud or Chomsky says is inconsistent with the truth that you know with Cartesian certainty what you are now consciously thinking | Self-Knowledge
+kuczynski | The essence of content-externalism is that Descartes himself, not some description, is a constituent of certain thoughts of yours | Content Externalism Essence
+kuczynski | If content-externalism is right, your knowledge of your own consciousness becomes as uncertain as your knowledge of early modern French history | Self-Knowledge Critique
+kuczynski | Your thoughts about your thoughts inherit the same constitutive dependencies on the environment as your first-order thoughts | Thought Inheritance
+kuczynski | The externalist's stratagem involves a failure to give due attention to distinctions of scope | Scope Distinctions
+kuczynski | Given any guarantee provided by content-externalism, it is logical rather than causal in nature | Logical vs Causal Guarantee
+kuczynski | The guarantee provided by content-externalism is of a logical, indeed tautologous, nature—not a causal guarantee | Tautological Guarantee
+kuczynski | Causal relations are not expressed by tautologies | Causation and Tautology
+kuczynski | Jackson and Pettit conflate the logical and causal dimensions of explanation | Jackson-Pettit Critique
+kuczynski | Somebody's coughing is not a state of affairs and thus cannot be related to anything the way the flame is related to the heating of the pan | States of Affairs
+kuczynski | The relationship between general existential statements and specific outcomes combines logical, effective-causal, and program-causal components | Explanation Types
+kuczynski | The fact that A and A* are struck with the same force isn't a state of affairs—it has no spatio-temporal location | Abstract Facts
+kuczynski | B's having functional role R provides no causal explanation since the latter is an analytic consequence of the former | Functionalism Critique
+kuczynski | To know that an argument is formally correct, it is necessary to know only its syntactic structure, not its semantics | Formal Correctness
+kuczynski | Syntactic form is completely different from geometrical form—morphology is a property of tokens, not types | Syntax vs Morphology
+kuczynski | Two morphologically identical expression-tokens can have completely different syntactic forms | Morphology-Syntax Gap
+kuczynski | What syntactic structure an expression has is a function of what it means—of its semantics | Syntax and Semantics
+kuczynski | Given any sentence-type, there is no limit to how different in respect of morphology two tokens of it can be | Morphological Variation
+kuczynski | The isomorphism between different tokens of the same type cannot be understood in strictly acoustical terms | Beyond Acoustics
+kuczynski | Syntactic form has little or nothing to do with morphological form | Form Distinction
+kuczynski | A being responding to form in the morphological sense is not thereby responding to form in the syntactic sense | Morphological vs Syntactic Response
+kuczynski | The syntax of an expression lies in its semantics | Syntax in Semantics
+kuczynski | A syntactic description of a sentence is a low-resolution description of its semantics | Syntax as Low-Resolution Semantics
+kuczynski | A manipulation of symbols is syntax-driven only if it is semantics-driven | Syntax Requires Semantics
+kuczynski | No disambiguation of the word form validates the idea that thinking consists in form-driven operations on symbols | Form Disambiguation
+kuczynski | The equivocation between logical and morphological form creates the illusion that morphology-driven operations can realize logic-driven operations | Form Equivocation
+kuczynski | Given any language rich enough to mediate human thoughts, syntactic structures will fail to track logical forms | Syntax-Logic Gap
+kuczynski | The hypothesis that Smith is following rule R is confirmationally different from the hypothesis that he merely accords with R | Rule-Following Confirmation
+kuczynski | If somebody grasps arithmetic, that knowledge will be expressed in ways other than symbolic manipulation | Arithmetic Knowledge
+kuczynski | Unless calculators grasp the relevant symbolic conventions, it would be absurd to suppose their arithmetical knowledge would be expressed in symbolic tokenings | Calculator Knowledge
+kuczynski | Knowledge of symbolic conventions presupposes the concept of denotation, which presupposes the concept of representation | Conceptual Prerequisites
+kuczynski | If calculators have semantic knowledge, it is completely ex nihilo with none of the moorings we would expect | Calculator Semantic Knowledge
+kuczynski | Even though calculators don't themselves compute, their behavior is appropriately understood in terms of actual computation | Calculator Behavior
+kuczynski | A person can use a calculator to add—calculator activities are constitutive of actual computation though calculators don't compute | Calculators and Computation
+kuczynski | The rule-following to which calculator behavior corresponds can be off-loaded onto the person behind the calculator | Off-Loading Rule-Following
+kuczynski | To the extent our behavior suggests rule-following involving linguistic concepts, that rule-following must be attributed to us | Rule-Following Attribution
+kuczynski | Wittgenstein's point that any course of action can be made to accord with a rule does not have the ramifications often thought | Wittgenstein on Rules
+kuczynski | The hypothesis that I follow add one is confirmationally different from the hypothesis that I follow add a million then subtract 999,999 | Rule Confirmation
+kuczynski | Unless radically counter-inductive assumptions are granted, the possibility of following bent rules isn't significant | Counter-Inductive Possibilities
+kuczynski | Wittgenstein makes only the innocuous point that nothing about psychology is logically entailed by truths about overt behavior | Wittgenstein's Point
+kuczynski | Given only one act, any hypothesis about rule-following is equiprobable with many others, but actual data-samples make bent hypotheses unlikely | Data Samples
+kuczynski | Wittgenstein's position goes through only if there is an extremely strict connection between grasping a concept and acting in a certain way | Wittgenstein Critique
+kuczynski | If I really am following a bent rule, there will be independent evidence—bent rule-following will be part of a history | Evidence of Bent Rules
+kuczynski | Considered in isolation, a given act can have any number of psychological antecedents, but other evidence constrains interpretation | Act Interpretation
+kuczynski | The concept of sub-personal mentation is not incoherent, contrary to what Wittgensteinians claim | Sub-Personal Mentation
+kuczynski | Wittgenstein denies there can be private languages not parasitic on public language | Private Language
+kuczynski | Given only that there is a syntactic characterization of inductive reasonableness, it doesn't follow our competence consists in sentence-sensitivity | Syntactic Characterization
+kuczynski | Sensitization to syntax is sensitization to facts about how sentences are assigned meaning | Syntax and Assignment
+kuczynski | So far as thinking is driven by facts about how expressions are assigned meaning, thinking is about that language, not in it | About vs In Language
+kuczynski | If thinking were syntax-driven in an internal language, it would be viciously regressive since syntax concerns meaning-assignment | Syntax and Regress
+kuczynski | The standard argument against SCT is that word-meaning is derivative of human thought, making linguistic thought viciously regressive | SCT Critique
+kuczynski | What people think is part of what fixes what expressions mean | Thought Fixes Meaning
+kuczynski | There is obviously non-linguistic communication—infants and animals can make themselves understood | Non-Linguistic Communication
+kuczynski | Linguistic competence embodies bona fide knowledge of propositions about meanings and cannot be dispositionalized away | Linguistic Competence
+kuczynski | Sub-sentential utterances don't have success-conditions, but the concept of success still explains their meaning contextually | Contextual Definition
+kuczynski | For Fred to refer to Fred is for expressions of the form Fred has phi to have certain truth-conditions | Contextual Reference
+kuczynski | It would be absurd to say Fred referred to Fred but deny that sentences of the form Fred has phi are true iff Fred has phi | Reference and Truth-Conditions
+kuczynski | Grice's theory identifies expression-meaning with speaker's meaning, making it incapable of explaining sub-sentential expressions | Grice Critique
+kuczynski | Even if the Gricean hypothesis about word-meaning origins is correct, it gives causal not conceptual analysis | Grice on Origins
+kuczynski | We want to know what the semantic fact is, not how it came about—we want its structure | Semantic Structure
+kuczynski | Agreement and understanding among people that noises of certain forms are successes under certain conditions endows those noises with meaning | Meaning and Agreement
+kuczynski | The relevant kind of success does not have to be understood in linguistic terms | Non-Linguistic Success
+kuczynski | What all sentences of the form Socrates has phi have in common is that they encode propositions of that form | Sentence Forms
+kuczynski | Socrates' existence in world w is a condition for the proposition's truth but not a precondition for grasping it | Existence Conditions
+kuczynski | One doesn't have to be near somebody by a fireplace to think about Fred—the initial existence claim must be replaced | Updating Existence Claims
+kuczynski | Changes in the existence claim through which I access Fred register my changed chronological perspective, like changes in spatial perspective | Chronological Perspective
+kuczynski | One typically forgets the existence claim through which one initially accessed an object | Forgetting Initial Access
+kuczynski | Knowledge of a given existence claim can be dropped without destroying the concept if replaced by an interlocking one | Existence Claim Replacement
+kuczynski | Understanding consists in associating an utterance with its meaning, but one effects this association through existence claims | Understanding Through Existence Claims
+kuczynski | Demonstrative thoughts are not Russellian with respect to their demonstrata even though demonstrative utterances are | Demonstratives and Thought
+kuczynski | You know what you are thinking with unimpeachable Cartesian certainty | Cartesian Self-Knowledge
+kuczynski | Freud and Chomsky show we're unaware of much mental activity, but this doesn't show we lack all Cartesian certainties | Freud and Chomsky
+kuczynski | Your knowledge that you're now thinking a proposition has a special certainty that cannot attach even to best substantiated beliefs about the external world | Special Certainty
+kuczynski | The worlds where Burge's assumptions are granted are not the worlds where one has the Cartesian certainties he's tethering to those assumptions | Burge Critique
+kuczynski | For all you know, you could be mistaking some non-thought for an actual thought, if content-externalism is right | Non-Thought Possibility
+kuczynski | If you don't know with Cartesian certainty that you're having a thought, you don't know with Cartesian certainty which thought you're having | Thought Identity Certainty
+kuczynski | Burge's argument begs the question by restricting attention to worlds where the relevant object has already been loaded into your thoughts | Begging the Question
+kuczynski | Content-externalism entails you don't know with Cartesian certainty whether you're thinking I enjoy reading Descartes vs I enjoy reading Smith | Thought Discrimination
+kuczynski | X's being a constituent of mental content is not a state of affairs in any causally significant sense when X and the thinker are separated by millions of years | Temporal Separation
+kuczynski | Given that X is a constituent of Smith's mental content, some state of affairs involving X is causally responsible, but not X's being such a constituent | Constituent vs Cause
+kuczynski | Not every non-empty noun-phrase denotes a state of affairs if by that we mean something of causal significance | Empty Causation
+kuczynski | Flames, pegs, temperatures are operational—X's being a constituent of mental content is not operational when separated by millions of years | Operational Causation
+kuczynski | Jackson and Pettit were misled by their own examples, which don't parallel the externalist case | Misleading Examples
+kuczynski | A pre-condition for my knowing that Mary went to the airport is that linguistic communication not require strict cognitive convergence | Communication Without Convergence
+kuczynski | For any true existence claim, its truth supervenes on the truth of some singular proposition—the truth-maker | Existence and Singularity
+kuczynski | Somebody who recognizes an existence claim is thereby grasping the truth-maker proposition, but by description | Grasping Truth-Makers
+kuczynski | One needn't be acquainted with a proposition to single it out | Singling Out
+kuczynski | The naive view demands strict cognitive convergence between speaker and auditor—but that's impossible given our different biographies | Naive View Critique
+kuczynski | Given our model of semantic competence, you and I are in complete lock-step regarding evidential and inferential significance of English sentences | Inferential Lock-Step
+kuczynski | The validity of arguments literally meant perfectly mirrors the validity of arguments grasped by thoughts behind those words | Validity Mirroring
+kuczynski | What we said about validity is true of truth, cogency, and every other logically significant property | Logical Properties
+kuczynski | Even in a world where Smith doesn't exist, Jones could have a mental state identical in content and causal properties with his actual concept of Smith | Possible Worlds and Content
+kuczynski | The content of a demonstrative concept is given by an existence claim which the demonstratum uniquely satisfies | Demonstrative Content
+kuczynski | Even paradigm cases for content-externalism show the falsity of that doctrine when properly analyzed | Paradigm Case Failure
+kuczynski | Premise 4 of Evans' argument is false—the proposition behind demonstrative utterances is existential, not singular | Evans Argument Critique
+kuczynski | Premise 3 of Evans' argument is ambiguous—understanding can involve knowledge by description, not acquaintance | Ambiguity in Evans
+kuczynski | Understanding a sentence does not require acquaintance with the proposition encoded—description suffices | Understanding by Description
+kuczynski | Evans' argument is fallacious because it requires acquaintance when description is all that's possible | Evans Fallacy
+kuczynski | In the hallucinatory scenario, there is no thought where Evans says there should be one—but the same is true in the veridical scenario | Hallucination Parity
+kuczynski | Evans wrongly thinks understanding demonstratives requires acquaintance with singular propositions | Evans on Demonstratives
+kuczynski | Objects we ordinarily think about—rocks, trees, vases—are far from fundamental constituents of space-time | Non-Fundamental Objects
+kuczynski | Socrates' existence must supervene on facts about organs, organelles, molecules, and ultimately on non-object-involving states of affairs | Supervenience Chain
+kuczynski | Given Kripke's points about essentiality of origins, Socrates could not have had dramatically different earlier life stages | Essential Origins Constraint
+kuczynski | From a strictly biological standpoint, Socrates could not have been more than infinitesimally different from how he was | Biological Constraints
+kuczynski | What fundamental means is context-dependent, but biological entities are nowhere near fundamental | Context of Fundamentality
+kuczynski | People are sad in different ways, just as objects can be blue in different ways—turquoise, azure, and so on | Phenomenological Variation
+kuczynski | Where expressions report inner states, it is especially important that communication involve identity of truth-maker, not proposition | Inner State Reports
+kuczynski | Two barriers exist for inner-state expressions: perceptual differences in learning the word, and phenomenological differences in the states | Double Barrier
+kuczynski | I have learned much from Aristotle's words—impossible if communication required exact thought-matching across our different life-histories | Learning from Ancients
+kuczynski | Language makes communication possible by focusing on truth-makers rather than the internal processes through which we learn about what is external | Language's Role
+kuczynski | One can tell people what one is thinking and feeling because linguistic communication doesn't require strict cognitive convergence | Expressing Inner States
+kuczynski | Perceptions of numerically different but qualitatively identical objects have a great deal of existential information in common | Shared Existential Content
+kuczynski | Content-externalists cannot accommodate the obvious fact that qualitatively identical perceptions share representational content | Shared Content Problem
+kuczynski | McDowell's disjunctivism holds that perceptions of different objects have no content in common—but this is demonstrably false | Disjunctivism Critique
+kuczynski | Soft content-externalism advocates a two-tiered conception of mental content | Two-Tiered Content
+kuczynski | The statement that Max is in W as opposed to W* is without experimental significance when the worlds are Poincare-identical | Poincare Analogy
+kuczynski | Just as absolute size and position are empty notions, so are the alleged differences between Max and Twin-Max | Empty Notions
+kuczynski | It is suspicious on methodological grounds when alleged differences don't disrupt any relational facts | Methodological Suspicion
+kuczynski | All of ostensive, descriptive, and picking-up modes of learning reference collapse into the descriptive | Collapse to Description
+kuczynski | One's learning what an expression refers to always involves learning some description that singles out its referent | Learning Reference
+kuczynski | To each kind of endeavor there corresponds a unique kind of success, as Aristotle noted | Success and Endeavor
+kuczynski | The activity of exchanging information defines a unique sphere of conduct to which a special variety of success attaches | Communication Sphere
+kuczynski | Pre-linguistic ancestors were intelligent enough to know they had methods of communication | Pre-Linguistic Awareness
+kuczynski | Instituting agreements doesn't presuppose language since non-linguistic understandings are clearly possible | Non-Linguistic Agreements
+kuczynski | If all communication were linguistic by definition, linguistic communication would be a pleonasm like unmarried bachelor | Terminological Point
+kuczynski | The ability to grasp propositions is a prerequisite to the ability to use a language, not constituted by it | Grasp Precedes Language
+kuczynski | Linguistic competence embodies bona fide knowledge of semantic rules, not mere dispositions | Knowledge vs Dispositions
+kuczynski | Dispositions to use expressions in certain ways are effects of linguistic competence, not constitutive of it | Dispositions as Effects
+kuczynski | Sub-sentential expressions are to be defined contextually—this was Frege and Russell's insight | Contextual Definition
+kuczynski | While utterances of Fred have no success-conditions, whole sentences of the form Fred has phi do | Success and Sentence-Forms
+kuczynski | The semantics of Fred is given by the success-conditions of sentences containing that name | Contextual Semantics
+kuczynski | In putting forth our analysis of meaning, we are guilty of no vicious circularity | Non-Circular Analysis
+kuczynski | Grice's theory cannot explain sub-sentential meaning since speaker's meaning necessarily diverges from word meaning for sub-sentential expressions | Grice on Sub-Sentential
+kuczynski | Any two English speakers will access the meaning of practically any given sentence through different bodies of information | Variable Access
+kuczynski | The truth-maker of my thought about Socrates will be identical with the truth-maker of yours, despite our different descriptive routes | Shared Truth-Makers
+kuczynski | Mental entities have their representational contents essentially—it is absurd to suppose a perception could have had different content | Essential Content
+kuczynski | V and V* satisfy the condition for identity of information: nothing can rationally be inferred from one that cannot be inferred from the other | Inferential Identity
+kuczynski | To say that our perceptions make us aware of objects through existence-claims is not to say perceptual content is propositional | Non-Propositional Content
+kuczynski | The causal connection between perceiver and perceived is a component of knowledge of a uniquely individuating description | Causal Component
+kuczynski | A symbol-token's morphology imposes no constraints on its syntax | Morphology and Syntax
+kuczynski | Two syntactically identical expression-tokens can have two completely different morphologies | Syntactic vs Morphological Identity
+kuczynski | Given content-externalism, your counterpart in an epistemically identical world could fail to have thoughts you actually have | Counterpart Thought-Failure
+kuczynski | The guarantee content-externalism provides that mental content has effects is tautologous, not causal | Tautologous Guarantee
+kuczynski | When we assess causal potency, we study synthetic connections, not logical consequences of definitions | Causal Potency
+kuczynski | The expression X's being a constituent of Smith's mental content does not denote a state of affairs in the causal sense | Non-State Expression
+kuczynski | The fact that infinitely many primes exist is not an empty noun-phrase, but it doesn't denote a relatum of any true causal statement | Mathematical Facts and Causation
+kuczynski | If all concepts were constitutively linked with other concepts, then it wouldn't be possible for two people to differ with respect to just one concept | Conceptual Holism Argument
+kuczynski | To the extent that content-externalism is correct, concepts come one at a time and not in clusters | Atomism from Externalism
+kuczynski | Given content-externalism, Fodor's atomism follows, as does his strictly causal conception of conception | Externalism Entails Atomism
+kuczynski | The conceptual differences between Max and Twin-Max supervene wholly on the differences in their causal liaisons | Causal Supervenience
+kuczynski | Most content-externalists have not gone so far as to accept conceptual atomism, but their systems are therefore inconsistent | Inconsistent Externalism
+kuczynski | A computation is a formal operation on symbols—an operation causally driven by forms, not meanings, of symbols involved | CTM Definition
+kuczynski | An immediate consequence of CTM is that thinking is not content-driven | CTM Consequence
+kuczynski | The purely formal properties of symbols can be coordinated with their representational properties to explain relevant phenomena | Form-Content Coordination
+kuczynski | It is a datum that certain kinds of thoughts are likely to follow other kinds—not that semantics is causally responsible for these patterns | Patterns vs Causation
+kuczynski | Mary herself is part of the content of your visual perception, says the content-externalist | Externalist Claim
+kuczynski | Pieces of information are individuated by their truth-conditions | Information Individuation
+kuczynski | Mary is not a constituent of V's content—Mary is described by that content but not a component of it | Content vs Description
+kuczynski | The content of an experience cannot be distinguished from what it tells you | Content as Information
+kuczynski | If your visual experience doesn't tell you that Mary has phi, then Mary is no part of the content of that experience | Content Criterion
+kuczynski | Given only what your eyes are telling you, you have no way of knowing whether you are seeing Mary or Twin-Mary | Perceptual Indiscriminability
+kuczynski | It is clearly more reasonable to say that differential information interacts with perceptual information than that it is part of it | Interaction vs Inclusion
+kuczynski | When Smith says Argo is a cad, you learn there is exactly one person Smith is describing as a cad on that occasion | Definite Description from Context
+kuczynski | The information you are given is not confined to what Smith himself says—you have information about his saying it | Meta-Information
+kuczynski | What enables you to use Argo to refer to Argo is your knowledge of some existence-claim that Argo uniquely satisfies | Reference Through Description
+kuczynski | The principles that govern picking up a name apply whether you are one remove or five hundred removes from the referent | Transmission of Reference
+kuczynski | A thought that has Socrates himself as a constituent obviously couldn't exist in counterfactual worlds where Socrates doesn't exist | De Re Thought Constraint
+kuczynski | Spatiotemporal states of affairs are individuated by a certain privileged subset of their causal properties | Individuation by Causation
+kuczynski | There is a possible world where O doesn't exist but where an awareness A having O as its object does exist with the same content | Awareness Without Object
+kuczynski | An awareness has a counterfactually resilient relationship to its object only when that object is a constituent of that awareness | Counterfactual Resilience
+kuczynski | Russell is right that the data encoded in one's thoughts never has Socrates per se as a constituent | Russell Vindicated
+kuczynski | Any thought about Socrates is not de re with respect to Socrates, except perhaps in cases where the thinker is Socrates himself | No De Re External Thought
+kuczynski | Objects like rocks, trees, and people are not the ultimate constituents of reality | Non-Fundamental Objects
+kuczynski | Complexity is ultimately a property of propositions or explanations, not of objects | Complexity as Propositional
+kuczynski | In the sub-atomic realm, there are no objects in any ordinary sense, only displacements of minute quanta of mass-energy | Sub-Atomic Reality
+kuczynski | Anything worthy of being classified as a fundamental constituent of space-time couldn't participate in biological processes | Fundamental vs Biological
+kuczynski | The truth of any singular proposition supervenes on that of some purely general proposition | Singular Supervenes on General
+kuczynski | One can be acquainted with a proposition whose truth depends on that of some singular proposition | Acquaintance with General
+kuczynski | Expressions denoting objects are either semantically simple or their complexity has nothing to do with the object's structure | Semantic Simplicity
+kuczynski | Our tendency to think in terms of objects is encouraged by the fact that expressions denoting them are semantically simple | Linguistic Influence on Thought
+kuczynski | Evans wrongly holds that in worlds where Descartes doesn't exist, you simply fail to have thoughts where you would have Descartes-thoughts | Evans on Missing Thoughts
+kuczynski | From a psychologist's standpoint there would be no difference between thoughts in worlds where Descartes exists or not | Psychological Sameness
+kuczynski | Content-externalism makes facts about representational content causally, and therefore psychologically, irrelevant | Content Without Causation
+kuczynski | One thinks about Descartes through the right kind of uniquely individuating description—consistent with direct reference theory | Description and Direct Reference
+kuczynski | In virtue of being a belief that 13 is prime, a brain-state has certain causal powers it wouldn't otherwise have | Content and Causal Power
+kuczynski | A brain in a vat that was just like mine would be capable of having arithmetical thoughts | Envatted Mathematical Thought
+kuczynski | It seems deeply arbitrary to suppose that content sometimes has causal powers and sometimes doesn't | Content Causation Consistency
+kuczynski | The property of being a thought is sometimes, and sometimes is not, a psychological property according to content-externalism | Inconsistent Thought-Property
+kuczynski | If one grasps Alpha Centauri, one does so by grasping some existence-claim available in any world | Universal Access
+kuczynski | When we look at purely qualitative existential propositions, the property of being a thought of a certain kind is a psychological property | Psychological Property of Thought
+kuczynski | What Fred takes away from Smith's utterance may be very different from Smith's thought, but they have the same truth-maker | Different Thoughts, Same Truth-Maker
+kuczynski | The singular proposition x was wise is the truth-maker of both the proposition I associate with Socrates was wise and the one you associate | Shared Truth-Maker
+kuczynski | Communication is possible only because it does not presuppose complete cognitive convergence between speaker and auditor | Communication Without Convergence
+kuczynski | Communicating involves speaker and auditor associating propositions with the same truth-makers, not identical propositions | Communication as Truth-Maker Identity
+kuczynski | Linguistic communication involves a coordination, not an identity, of thought | Coordination of Thought
+kuczynski | Speaker and auditor must have parallel, not necessarily coincident, thoughts | Parallel Thoughts
+kuczynski | Even if our thoughts are mediated by language, expressions of that language are replete with indexicals | Indexicals in Mentalese
+kuczynski | Where indexicals are concerned, syntax cannot possibly track logical form | Syntax-Logic Divergence
+kuczynski | Even if we grant CTM all its assumptions, it fails to account for our cognitive sensitivity to logical form | CTM Failure
+kuczynski | There is no morphological characterization of syntax, no syntactic characterization of logic, no morphological characterization of logic | Triple Failure
+kuczynski | A morphology-driven manipulation of symbols is not necessarily one that tracks either syntactic or logical form | Morphology vs Logic
+kuczynski | The only thoughts expressible by indexical-free sentences are those concerning immutable relations among concepts | Indexical-Free Thought
+kuczynski | Strawson made clear that where there are indexicals, there is necessarily a divergence between logical and syntactical form | Strawson on Indexicals
+kuczynski | A token of if it is warm here then it is warm here may encode a valid, invalid, or inductive argument depending on co-reference | Indexical Validity Variation
+kuczynski | Brown's behavior is symbol-driven because it is caused by his recognition that the ink-mark was the effect of certain socio-psychological conditions | Symbol-Driven Behavior
+kuczynski | An object's functioning as a symbol involves someone's recognizing that it has certain origins | Symbols and Origins
+kuczynski | A genuinely symbolic response to an ink-mark involves knowledge that it has certain origins—coincidentally correct belief won't suffice | Knowledge vs Lucky Belief
+kuczynski | To accommodate the causal powers of symbol-tokens qua symbol-tokens, we must insist that an ink-mark is but one aspect of instantiating a symbol-type | Symbol-Token Complexity
+kuczynski | Given only that the presence of what is in fact a symbol caused you to act, it doesn't follow your activity has any symbolic dimension | Caused vs Driven
+kuczynski | CTM doesn't register the distinction between a behavior's being symbol-caused and its being symbol-driven | CTM Conflation
+kuczynski | For a symbolic operation to be form-driven is for it to be driven by knowledge of at least some semantic properties of the symbols | Form Requires Semantics
+kuczynski | Semantics is fixed at least in part by psychology, so sensitivity to semantics is confluent with sensitivity to psychology | Semantics-Psychology Connection
+kuczynski | Even the content-externalist accepts that facts about human psychology are partially constitutive of semantic meaning | Psychology and Meaning
+kuczynski | An ink-mark is at most one component of a symbol-token | Ink-Mark as Component
+kuczynski | Whenever an ink-mark is a component of a symbol-token, its function is in large part to indicate operativeness of socio-psychological conditions | Morphology as Indicator
+kuczynski | Two tokens of a single symbol-type may be morphologically very different from each other—there is no limit to the divergence | Morphological Elasticity
+kuczynski | CTM needs morphological and semantic aspects of language to be in lockstep, but circumstances permitting such alignments are singularities | Alignment as Singularity
+kuczynski | In taking morphology as primary, CTM erroneously takes singularities as paradigms and regards non-singularities as deviations | CTM's Error
+kuczynski | Even under complete petrifaction of symbol-morphology, automatization of thought would be no more possible than under our conditions | Petrifaction Thought Experiment
+kuczynski | Two distinct expressions can be betokened by physically indistinguishable objects—context determines which is being tokened | Context-Dependent Tokening
+kuczynski | Context selects the appropriate disambiguation on the basis of the meanings of the symbols in question | Context and Meaning
+kuczynski | Given any physical object O and any meaning M, there is some possible language L such that O means M in L | Arbitrary Meaning Assignment
+kuczynski | By itself, an object's morphology does little to determine whether it tokens some expression-type of a language | Morphology Underdetermines Type
+kuczynski | If you fail to enunciate or your calligraphy is poor, I won't know what you are saying—morphology imposes constraints | Morphological Constraints
+kuczynski | Morphology only has an extremely partial role in determining whether a physical object betokens this as opposed to that expression-type | Partial Role of Morphology
+kuczynski | The information through which one computes meanings is replete with conceptual structure | Pre-Semantic Structure
+kuczynski | Every cognitively normal person can make extraordinarily delicate judgments about emotions, art, and physical bodies without articulating grounds | Unarticulated Judgment
+kuczynski | Such judgments are at least sometimes principled, but the principles often fall outside introspective awareness | Sub-Personal Principles
+kuczynski | Given that piece X has such musical properties, it follows conceptually, not inductively, that it is rock 'n' roll | Conceptual Classification
+kuczynski | Jones may never articulate the grounds for judgments as efficiently as he operates with the term, but the concept still has analytic structure | Implicit Analytic Structure
+kuczynski | What is sub-personally known vastly exceeds what is personally known along certain dimensions | Sub-Personal Knowledge
+kuczynski | Information in the sub-personal realm is transmitted and processed exponentially faster than at the personal level | Sub-Personal Processing
+kuczynski | If we act like things that follow rules involving concepts like c-command, there is good evidence we really do follow those rules | Rule-Following Evidence
+kuczynski | The hypothesis that I follow add one is confirmationally different from the hypothesis that I merely accord with it | Following vs According
+kuczynski | To show calculators don't compute, Searle must show that after background facts are considered, calculators don't act like arithmeticians | Searle's Burden
+kuczynski | Unless calculators grasp semantic knowledge with independent evidence, it's absurd to suppose their tokening expresses arithmetical knowledge | Independent Evidence Needed
+kuczynski | If calculators have semantic knowledge, it is completely ex nihilo with none of the moorings we would expect | Ex Nihilo Knowledge
+kuczynski | Even though calculators don't compute, their behavior is appropriately understood in terms of actual computation | Calculator Interpretation
+kuczynski | A person can use a calculator to add—calculator activities are constitutive of actual computation though calculators don't themselves compute | Constitutive Computation
+kuczynski | The rule-following to which calculator behavior corresponds can be off-loaded onto the person behind the calculator | Off-Loading to Users
+kuczynski | Given only that word-meaning is parasitic on human thought, it doesn't follow that Grice's analysis of meaning is right | Against Grice
+kuczynski | What people think is part of what fixes what expressions mean | Thought Fixes Meaning
+kuczynski | It is viciously regressive to suppose that we think in a language if word-meaning is parasitic on thought | SCT Regress
+kuczynski | The SCT counter-response is to say that meanings of Mentalese symbols are not fixed by thought | Mentalese Reply
+kuczynski | If Mentalese symbols' meanings aren't fixed by thought, it becomes questionable whether they deserve to be called symbols | Questionable Symbols
+kuczynski | Scientific progress consists in making principled extensions of concepts, but SCT may have over-extended the concept of a symbol | Over-Extension
+kuczynski | The word language is ambiguous, but not in the way Lewis thinks | Language Ambiguity
+kuczynski | Linguistic meaning never refers to function-theoretic pairings, and language never refers to a set of such pairings | Against Function-Theoretic Meaning
+kuczynski | Lewis is right that language is ambiguous but wrong about the nature of the ambiguity | Lewis Partly Right
+kuczynski | Languages are constituted by patterns of behavior and thought—people producing certain noises in response to stimuli | Languages as Behavioral
+kuczynski | Saussure's distinction between langue and parole is legitimate | Saussure Vindicated
+kuczynski | The proposition Smith punched Jones is not identical with an ordered tuple—ordered pairs aren't true or false | Against Tuple Theory
+kuczynski | If the proposition were identical with a structure consisting of Smith, Jones, and punching arranged like an instance of punching, its existence would demand its truth | Structure Problem
+kuczynski | Until we are told what saturated means, Frege has given us only a metaphor | Frege's Metaphor
+kuczynski | The constituents of propositions cannot themselves be understood in terms of propositions | Non-Propositional Constituents
+kuczynski | To grasp a proposition, I must grasp its constituents—this cannot be done through other propositions without vicious regress | Grasp and Regress
+kuczynski | It must be assumed that ultimately the contents of our mental representations of propositional constituents are non-propositional | Non-Propositional Content
+kuczynski | The statement propositions are classes containing their logical consequences is viciously circular | Logical Consequence View Circular
+kuczynski | The class of logical consequences of Fred is tall does not have any discrete part corresponding to Fred | No Discrete Constituent
+kuczynski | If we identify propositions with classes of consequences, equivalent propositions would be indistinguishable | Equivalence Problem
+kuczynski | If by world is meant a set of propositions, it is viciously circular to say propositions are functions from worlds to truth-values | Possible Worlds Circularity
+kuczynski | PWS cannot distinguish between 1+1=2 and triangles have three sides since they're true in the same worlds | PWS Conflation
+kuczynski | Given only that an expression must be defined contextually, it doesn't follow that it has no meaning in isolation | Context vs Isolation
+kuczynski | Not all forms of signification are identical with reference | Signification vs Reference
+kuczynski | Given any expression that parses out, Montague's method can show it has a function for its meaning | Montague's Method
+kuczynski | Smith and this instance of pain don't have isolable spatiotemporal significances, but they do have isolable significances | Abstract Significances
+kuczynski | Our view is that those significances are not spatiotemporally discrete entities—an independently plausible view | Non-Spatiotemporal Meaning
+kuczynski | The intuition that killing infants is evil is a datum that any viable ethical theory must validate or explain away | Ethical Data
+kuczynski | Frege and Russell argued compellingly that logical form is very different from grammatical form | Logical vs Grammatical Form
+kuczynski | Grammatically, some man snores has the same structure as no man snores, but logically they are incomparable | Grammatical-Logical Divergence
+kuczynski | A sentence is logically true if it is true under all reinterpretations of its non-logical constants | Logical Truth Definition
+kuczynski | If Fred is wise then Fred is a sentient being is analytic but not formally correct since its syntax doesn't guarantee its truth | Analytic vs Formal
+kuczynski | Knowledge of semantics is to some degree constitutive of knowledge of syntax | Semantics Constitutes Syntax
+kuczynski | If we show CTM fails given its own assumptions, we show it is uncontroversially false | Internal Critique
+kuczynski | Given how different my life-history is from Aristotle's, complete cognitive convergence is impossible even in principle | Biographical Divergence
+kuczynski | Language cuts through these biographical differences because communication is about what is external | External Focus of Language
+kuczynski | Verbal communication is an obvious and pervasive phenomenon | Communication Datum
+kuczynski | The naive model of communication—that speaker and auditor associate exactly the same propositions—is a non-starter | Naive Model Fails
+kuczynski | In considering whether glass's being a constituent of mental content has causal potency, we must set aside analytic consequences | Setting Aside Analytics
+kuczynski | The guarantee content-externalism provides is logical, indeed tautologous, in nature—not causal | Tautologous Not Causal
+kuczynski | To identify the cause of an event, one must set aside strictly logical consequences of the differences discussed | Methodology for Causation
+kuczynski | Jackson and Pettit conflate the concept of a logical guarantee with that of a causal guarantee | Jackson-Pettit Conflation
+kuczynski | Leaving aside analytic differences, Max's thought and behavior in W* is not different from his thought and behavior in W | No Residual Difference
+kuczynski | Given a world like ours but where there is XYZ in the glass, I still reach out and grab the glass | Behavior Unchanged
+kuczynski | Content-externalism just is the position that object X's being a constituent of mental state Y consists in X causing Y | Externalism Defined
+kuczynski | The guarantee that X is a component of mental content follows logically from the externalist's position—a by-product of description | Descriptive Artifact
+kuczynski | Causal relations are given by synthetic propositions—logical relations are not causal relations | Synthetic Causation
+kuczynski | In so far as P logically guarantees Q's truth, P doesn't provide a causal guarantee of Q's truth | Logical Not Causal Guarantee
+kuczynski | My desire for ice-water is active at the time I grab the glass—functionalism cannot accommodate this fact | Functionalism's Problem
+kuczynski | If content-externalism is right, your knowledge that you're having a thought is only as good as your knowledge of external history | Self-Knowledge Undermined
+kuczynski | Even if SK is cogent, it fails to establish that content-externalism is consistent with our presumptions about self-knowledge | SK Insufficient
+kuczynski | Our presumption is that I know with Cartesian certainty that I am thinking some thought x such that x is I enjoy drinking water | Narrow Scope Certainty
+kuczynski | Content-externalism warrants extremely revisionist views about self-knowledge in conflict with hearty intuitions | Revisionist Self-Knowledge
+kuczynski | If the concepto of knowledge had no structure, one couldn't have intuitions about counterexamples to analyses of it | Structured Concepts
+kuczynski | It is not possible to give an adequate analysis of the concept of knowledge, but this doesn't mean it lacks structure | Structure Without Analysis
+kuczynski | The analytic structure of a concept is found in its relations to non-conceptual content, not in liaisons with other concepts | Non-Conceptual Structure
+kuczynski | Conceptual analyses don't state conceptual identities—they expose different conceptualizations of the same situation-representations | Analysis as Reconceptualization
+kuczynski | The concept circle is not identical with the concept closed two-dimensional figure of uniform curvature | Non-Identical Concepts
+kuczynski | If all content is conceptual, analyses would expose structures of concepts—but this is easily shown false | Against All-Conceptual Content
+kuczynski | One's thinking x is a triangle cannot cause one to think x is straight-edged if the first thought includes the second | Causal Self-Relation Impossible
+kuczynski | If you believe x is a triangle, you either believe x is straight-edged or need only conceptualize what you already know | Near-Belief
+kuczynski | There can be analytic statements that are decidedly non-trivial | Non-Trivial Analytics
+kuczynski | A correct analysis can be informative because the concepts on each side are different conceptualizations of the same representations | Informative Analysis
+kuczynski | The paradox of analysis is solved by distinguishing conceptual from non-conceptual content | Paradox Solution
+kuczynski | Smith saying I'm going to the bank means river's edge if he carries a fishing pole, not a briefcase | Context and Disambiguation
+kuczynski | Until Smith knows what you mean by like this, he cannot carry out your instructions | Semantic Prerequisites
+kuczynski | If you have intuitions about whether something is knowledge, you have insight into the structure of that concept | Intuition and Structure
+kuczynski | The distinction between what is literally meant and what we learn in ascertaining literal meaning must be appreciated | Literal vs Learned
+kuczynski | Given any external object x, if one grasps x, one does so by way of some existential proposition graspable in any world | Universal Graspability
+kuczynski | In virtue of being a grasping of a purely qualitative proposition, a mental state falls into this rather than that psychological category | Psychological Categorization
+kuczynski | The view that thinking is syntax-driven in that it is morphology-driven fails because morphology can't be aligned with syntax | Morphology-Syntax Misalignment
+kuczynski | Anyone who understands Smith punched Jones can understand Jones punched Smith | Compositional Understanding
+kuczynski | The things meant by sentences must have discrete constituents corresponding to the expressions composing those sentences | Compositional Meaning
+kuczynski | Sub-sentential utterances don't have success-conditions, but the concept of success still applies through contextual definition | Contextual Success
+kuczynski | For there to be understandings of the kind described, it must be possible to have a non-linguistic grasp of propositions | Pre-Linguistic Grasp
+kuczynski | Linguistic competence is not constituted by dispositions—dispositions are mere effects of linguistic competence | Dispositions as Effects
+kuczynski | Knowledge of symbolic conventions presupposes the concept of denotation, which presupposes the concept of representation | Conceptual Prerequisites
+kuczynski | The argument presupposes a non-atomistic conception of concepts—if one has one concept, one has others | Holistic Presupposition
+kuczynski | A concept of x cannot be realized wholly by a causal relation to x | Against Causal Realization
+kuczynski | Sophisticated advocates of CTM advocate conceptual atomism and a strictly causal conception of conception for related reasons | CTM-Atomism Link
+kuczynski | Even though calculators don't perform arithmetical operations, their behavior is appropriately understood in terms of such operations | Appropriate Interpretation
+kuczynski | Calculator behavior has a special connection to arithmetic—not merely that taking the false view makes prediction easy | Beyond Predictive Utility
+kuczynski | The activities of calculators are constitutive of actual cases of computation even though calculators do not themselves compute | Constitutive Role
+kuczynski | The fact that calculator behavior is evidentially innocuous is not what Searle should conclude | Against Searle's Conclusion
+kuczynski | When assessing causal potency, we study synthetic connections, not logical consequences of definitions | Synthetic Connections
+kuczynski | The objects in terms of which we are inclined to think—rocks, trees, vases—are far from fundamental | Non-Fundamental Thinking
+kuczynski | A precondition for knowing that Mary went to the airport is that communication not require strict cognitive convergence | Communication Precondition
+kuczynski | The expression X's being a constituent of Smith's mental content does not denote a state of affairs in the causal sense | Non-Causal Expression
+kuczynski | The flame's presence provides a causal guarantee for the pan's heating—content-externalism provides only a logical guarantee | Flame Analogy
+kuczynski | My having thoughts about H2O does not bear the same relation to grabbing the glass that flame presence bears to pan heating | Disanalogy with Flame
+kuczynski | The glass's being a constituent of my mental states' content does not supervene on what is local but on what is remote | Non-Local Supervenience
+kuczynski | The glass's being a constituent doesn't guarantee intention-formation in a sense comparable to flame guaranteeing pan-heating | Incomparable Guarantees
+kuczynski | In one case the guarantee is an artifact of description, in the other it holds in virtue of a causal nexus | Artifact vs Nexus
+kuczynski | Whether x falls under the extension of ultimate constituent of reality depends on the relevant criterion of simplicity | Criterion-Dependent Fundamentality
+kuczynski | The concept-forming process involves detecting natural joints—structure already present in the non-conceptual representations | Detecting Natural Joints
+kuczynski | Concepts are ways of carving up non-conceptual content | Carving Content
+kuczynski | Analytic structure is to be found in relations between concepts and non-conceptual content, not between concepts and other concepts | Analytic Structure Location
+kuczynski | The content of a perception is existential—it says there is something of such-and-such a kind, not that a specific thing has properties | Existential Content
+kuczynski | Content-externalism renders representational properties epiphenomenal | Epiphenomenal Content
+kuczynski | If thinking consists in computing, and computing is formal operation on symbols, then thinking is not content-driven | CTM's Anti-Content Thesis
+kuczynski | Fodor has argued compellingly that CTM, SCT, and hard-line externalism all presuppose his strictly causal analysis of conception | Fodor's Presupposition Argument
+kuczynski | The word form has a syntactic and a morphological sense that must not be conflated | Form Ambiguity
+kuczynski | CTM's credibility derives from conflating logical form with morphological form | Source of CTM's Appeal
+kuczynski | The equivocation creates the illusion that morphology-driven operations can miraculously realize logic-driven operations | Equivocation Illusion
+kuczynski | Truth-maker identity, not proposition identity, is what matters for communication | Truth-Maker Primacy
+kuczynski | The naïve theory of communication demands strict cognitive convergence that cannot occur given our different biographies | Impossible Convergence
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
