@@ -5,6 +5,7 @@ import axios from "axios";
 import mammoth from "mammoth";
 // @ts-ignore - pdf-parse has no proper types
 import { PDFParse } from "pdf-parse";
+import { setupAuth } from "./auth";
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -177,6 +178,9 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  // Setup authentication (must be before other routes)
+  setupAuth(app);
+
   // Extract text from Word document (.docx)
   app.post("/api/extract-docx", upload.single("file"), async (req, res) => {
     try {
