@@ -1,14 +1,11 @@
-import { useState, useCallback, useEffect } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useState, useCallback } from "react";
+import { useMutation } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/hooks/use-auth";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { queryClient } from "@/lib/queryClient";
 import { 
   Upload, 
   FileText, 
@@ -20,10 +17,6 @@ import {
   FileImage,
   ScanText,
   RotateCcw,
-  LogIn,
-  LogOut,
-  CreditCard,
-  Clock,
   GripVertical,
   ChevronUp,
   ChevronDown,
@@ -46,84 +39,6 @@ export default function Home() {
   const [isDragging, setIsDragging] = useState(false);
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
-  const { user, isLoading: authLoading, isAuthenticated } = useAuth();
-
-  // Access status query
-  const { data: accessStatus, isLoading: accessLoading } = useQuery<{
-    hasAccess: boolean;
-    expiresAt: string | null;
-  }>({
-    queryKey: ["/api/access-status"],
-    enabled: isAuthenticated,
-  });
-
-  // Check for payment success/cancelled in URL
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("payment") === "success") {
-      toast({
-        title: "Payment successful!",
-        description: "You now have 1-day access to the OCR feature.",
-      });
-      queryClient.invalidateQueries({ queryKey: ["/api/access-status"] });
-      window.history.replaceState({}, "", window.location.pathname);
-    } else if (params.get("payment") === "cancelled") {
-      toast({
-        title: "Payment cancelled",
-        description: "Your payment was cancelled.",
-        variant: "destructive",
-      });
-      window.history.replaceState({}, "", window.location.pathname);
-    }
-  }, [toast]);
-
-  // Payment mutation
-  const paymentMutation = useMutation({
-    mutationFn: async () => {
-      const response = await fetch("/api/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || "Failed to create checkout session");
-      }
-      return response.json();
-    },
-    onSuccess: (data) => {
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    },
-    onError: (error: Error) => {
-      toast({
-        title: "Payment error",
-        description: error.message,
-        variant: "destructive",
-      });
-    },
-  });
-
-  const hasAccess = accessStatus?.hasAccess || false;
-
-  // Calculate remaining hours
-  const getRemainingTime = () => {
-    if (!accessStatus?.expiresAt) return null;
-    const expiresAt = new Date(accessStatus.expiresAt);
-    const now = new Date();
-    const diffMs = expiresAt.getTime() - now.getTime();
-    if (diffMs <= 0) return null;
-    
-    const hours = Math.floor(diffMs / (1000 * 60 * 60));
-    const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    
-    if (hours > 0) {
-      return `${hours}h ${minutes}m remaining`;
-    }
-    return `${minutes}m remaining`;
-  };
-  
-  const remainingTime = hasAccess ? getRemainingTime() : null;
 
   // TXT Combiner state
   const [txtFiles, setTxtFiles] = useState<File[]>([]);
@@ -483,71 +398,6 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            {authLoading ? (
-              <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
-            ) : isAuthenticated && user ? (
-              <div className="flex items-center gap-3">
-                {/* Access Status Badge */}
-                {accessLoading ? (
-                  <Badge variant="secondary">
-                    <Loader2 className="h-3 w-3 mr-1 animate-spin" />
-                    Checking...
-                  </Badge>
-                ) : hasAccess ? (
-                  <Badge className="bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20" data-testid="badge-access-active">
-                    <Clock className="h-3 w-3 mr-1" />
-                    {remainingTime || "Access Active"}
-                  </Badge>
-                ) : (
-                  <Button
-                    size="sm"
-                    onClick={() => paymentMutation.mutate()}
-                    disabled={paymentMutation.isPending}
-                    data-testid="button-buy-access"
-                  >
-                    {paymentMutation.isPending ? (
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                    ) : (
-                      <CreditCard className="h-4 w-4 mr-2" />
-                    )}
-                    Buy Access ($1)
-                  </Button>
-                )}
-                <div className="flex items-center gap-2">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src={user.profileImageUrl || undefined} alt={user.firstName || "User"} />
-                    <AvatarFallback>
-                      {user.firstName?.[0] || user.email?.[0]?.toUpperCase() || "U"}
-                    </AvatarFallback>
-                  </Avatar>
-                  <span className="text-sm font-medium hidden sm:inline">
-                    {user.firstName || user.email?.split("@")[0] || "User"}
-                  </span>
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  asChild
-                  data-testid="button-logout"
-                >
-                  <a href="/api/logout">
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Logout
-                  </a>
-                </Button>
-              </div>
-            ) : (
-              <Button
-                size="sm"
-                asChild
-                data-testid="button-login"
-              >
-                <a href="/api/login">
-                  <LogIn className="h-4 w-4 mr-2" />
-                  Login with Google
-                </a>
-              </Button>
-            )}
             <ThemeToggle />
           </div>
         </div>
