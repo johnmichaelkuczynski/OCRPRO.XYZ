@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
+import { Link } from "wouter";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { 
@@ -21,6 +22,7 @@ import {
   RotateCcw,
   LogIn,
   LogOut,
+  BarChart3,
   GripVertical,
   ChevronUp,
   ChevronDown,
@@ -403,6 +405,14 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            {isAuthenticated && user?.email?.toLowerCase() === "johnmichaelkuczynski@gmail.com" && (
+              <Button variant="ghost" size="sm" asChild data-testid="link-administrative">
+                <Link href="/administrative">
+                  <BarChart3 className="h-4 w-4 mr-2" />
+                  Administrative
+                </Link>
+              </Button>
+            )}
             {authLoading ? (
               <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
             ) : isAuthenticated && user ? (

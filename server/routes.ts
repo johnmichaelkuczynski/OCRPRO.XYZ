@@ -5,7 +5,7 @@ import axios from "axios";
 import mammoth from "mammoth";
 // @ts-ignore - pdf-parse has no proper types
 import { PDFParse } from "pdf-parse";
-import { setupAuth } from "./auth";
+import { setupAuth, isAuthenticated } from "./auth";
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -182,7 +182,7 @@ export async function registerRoutes(
   setupAuth(app);
 
   // Extract text from Word document (.docx)
-  app.post("/api/extract-docx", upload.single("file"), async (req, res) => {
+  app.post("/api/extract-docx", isAuthenticated, upload.single("file"), async (req, res) => {
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });
@@ -203,7 +203,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post("/api/ocr", upload.single("file"), async (req, res) => {
+  app.post("/api/ocr", isAuthenticated, upload.single("file"), async (req, res) => {
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });
