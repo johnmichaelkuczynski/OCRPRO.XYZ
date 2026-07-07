@@ -1,0 +1,1 @@
+- [Google OAuth + deployment quirks](google-oauth-deploy.md) — canonical auth.ts rules, creds naming, deleted-deployment fallout, helium DB URL reassurance.
