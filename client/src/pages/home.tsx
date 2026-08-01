@@ -490,7 +490,7 @@ export default function Home() {
                   id="file-upload"
                   type="file"
                   className="sr-only"
-                  accept=".pdf,.png,.jpg,.jpeg,.txt,.docx"
+                  accept=".pdf,.png,.jpg,.jpeg,.txt,.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                   onChange={handleInputChange}
                   disabled={ocrMutation.isPending}
                   data-testid="input-file-upload"
@@ -513,6 +513,7 @@ export default function Home() {
                     <Badge variant="secondary">PNG</Badge>
                     <Badge variant="secondary">JPG</Badge>
                     <Badge variant="secondary">TXT</Badge>
+                    <Badge variant="secondary">DOCX</Badge>
                   </div>
                   <p className="text-xs text-muted-foreground">
                     Maximum file size: 300MB
