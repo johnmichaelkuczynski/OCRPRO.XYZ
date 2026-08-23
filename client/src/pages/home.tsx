@@ -5,9 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/hooks/use-auth";
 import { Link } from "wouter";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { 
   Upload, 
@@ -20,8 +18,6 @@ import {
   FileImage,
   ScanText,
   RotateCcw,
-  LogIn,
-  LogOut,
   BarChart3,
   GripVertical,
   ChevronUp,
@@ -45,7 +41,6 @@ export default function Home() {
   const [isDragging, setIsDragging] = useState(false);
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
-  const { user, isAuthenticated, isLoading: authLoading, logout, isLoggingOut } = useAuth();
 
   // TXT Combiner state
   const [txtFiles, setTxtFiles] = useState<File[]>([]);
@@ -405,55 +400,12 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            {isAuthenticated && user?.email?.toLowerCase() === "johnmichaelkuczynski@gmail.com" && (
-              <Button variant="ghost" size="sm" asChild data-testid="link-administrative">
-                <Link href="/administrative">
-                  <BarChart3 className="h-4 w-4 mr-2" />
-                  Administrative
-                </Link>
-              </Button>
-            )}
-            {authLoading ? (
-              <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
-            ) : isAuthenticated && user ? (
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2">
-                  <Avatar className="h-8 w-8">
-                    <AvatarFallback data-testid="text-user-initial">
-                      {(user.displayName?.[0] || user.username?.[0] || user.email?.[0] || "U").toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-                  <span className="text-sm font-medium hidden sm:inline" data-testid="text-username">
-                    {user.displayName || user.username || user.email?.split("@")[0] || "User"}
-                  </span>
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => logout()}
-                  disabled={isLoggingOut}
-                  data-testid="button-logout"
-                >
-                  {isLoggingOut ? (
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  ) : (
-                    <LogOut className="h-4 w-4 mr-2" />
-                  )}
-                  Logout
-                </Button>
-              </div>
-            ) : (
-              <Button
-                size="sm"
-                asChild
-                data-testid="button-login"
-              >
-                <a href="/api/auth/google">
-                  <LogIn className="h-4 w-4 mr-2" />
-                  Login with Google
-                </a>
-              </Button>
-            )}
+            <Button variant="ghost" size="sm" asChild data-testid="link-administrative">
+              <Link href="/administrative">
+                <BarChart3 className="h-4 w-4 mr-2" />
+                Administrative
+              </Link>
+            </Button>
             <ThemeToggle />
           </div>
         </div>

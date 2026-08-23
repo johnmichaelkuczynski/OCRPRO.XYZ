@@ -16,7 +16,7 @@ export interface IStorage {
     id: number,
     data: { googleId?: string; displayName?: string | null }
   ): Promise<User>;
-  recordVisit(userId: number, email: string | null): Promise<void>;
+  recordVisit(userId: number | null, email: string | null): Promise<void>;
   getVisits(limit: number): Promise<Visit[]>;
   getVisitTimestampsSince(since: Date | null): Promise<Date[]>;
 }
@@ -83,7 +83,7 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
-  async recordVisit(userId: number, email: string | null): Promise<void> {
+  async recordVisit(userId: number | null, email: string | null): Promise<void> {
     await db.insert(visits).values({ userId, email });
   }
 

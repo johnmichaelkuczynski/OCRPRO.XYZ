@@ -5,7 +5,7 @@ import axios from "axios";
 import mammoth from "mammoth";
 // @ts-ignore - pdf-parse has no proper types
 import { PDFParse } from "pdf-parse";
-import { setupAuth, isAuthenticated } from "./auth";
+import { storage } from "./storage";
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -178,11 +178,90 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Setup authentication (must be before other routes)
-  setupAuth(app);
+  app.post("/api/visits", async (_req, res) => {
+    try {
+      await storage.recordVisit(null, null);
+      res.status(201).json({ success: true });
+    } catch (error) {
+      console.error("Visitor tracking error:", error);
+      res.status(500).json({ error: "Failed to record visit" });
+    }
+  });
+
+  app.get("/api/admin/visits", async (_req, res) => {
+    try {
+      const now = Date.now();
+      const HOUR = 60 * 60 * 1000;
+      const DAY = 24 * HOUR;
+      const dayAgo = new Date(now - DAY);
+      const monthAgo = new Date(now - 30 * DAY);
+      const yearAgo = new Date(now - 365 * DAY);
+
+      const [visitList, allTimestamps] = await Promise.all([
+        storage.getVisits(500),
+        storage.getVisitTimestampsSince(null),
+      ]);
+
+      const times = allTimestamps.map((t) => new Date(t).getTime());
+      const stats = {
+        allTime: times.length,
+        last24Hours: times.filter((t) => t >= dayAgo.getTime()).length,
+        lastMonth: times.filter((t) => t >= monthAgo.getTime()).length,
+        lastYear: times.filter((t) => t >= yearAgo.getTime()).length,
+      };
+
+      const buildSeries = (
+        start: number,
+        bucketMs: number,
+        buckets: number,
+        labelFn: (d: Date) => string,
+      ) => {
+        const counts = new Array(buckets).fill(0);
+        for (const time of times) {
+          if (time >= start) {
+            const index = Math.min(Math.floor((time - start) / bucketMs), buckets - 1);
+            counts[index]++;
+          }
+        }
+        return counts.map((count, index) => ({
+          label: labelFn(new Date(start + index * bucketMs)),
+          count,
+        }));
+      };
+
+      const series = {
+        last24Hours: buildSeries(now - 24 * HOUR, HOUR, 24, (date) =>
+          date.toLocaleTimeString("en-US", { hour: "numeric", hour12: true })),
+        lastMonth: buildSeries(now - 30 * DAY, DAY, 30, (date) =>
+          date.toLocaleDateString("en-US", { month: "short", day: "numeric" })),
+        lastYear: buildSeries(now - 365 * DAY, 365 / 12 * DAY, 12, (date) =>
+          date.toLocaleDateString("en-US", { month: "short", year: "2-digit" })),
+        allTime: (() => {
+          const earliest = times.length ? Math.min(...times) : now;
+          const span = Math.max(now - earliest, DAY);
+          const buckets = Math.min(24, Math.max(6, Math.ceil(span / (30 * DAY))));
+          return buildSeries(earliest, span / buckets, buckets, (date) =>
+            date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "2-digit" }));
+        })(),
+      };
+
+      res.json({
+        stats,
+        series,
+        visits: visitList.map((visit) => ({
+          id: visit.id,
+          email: visit.email,
+          visitedAt: visit.visitedAt,
+        })),
+      });
+    } catch (error) {
+      console.error("Visitor analytics error:", error);
+      res.status(500).json({ error: "Failed to load visitor data" });
+    }
+  });
 
   // Extract text from Word document (.docx)
-  app.post("/api/extract-docx", isAuthenticated, upload.single("file"), async (req, res) => {
+  app.post("/api/extract-docx", upload.single("file"), async (req, res) => {
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });
@@ -203,7 +282,7 @@ export async function registerRoutes(
     }
   });
 
-  app.post("/api/ocr", isAuthenticated, upload.single("file"), async (req, res) => {
+  app.post("/api/ocr", upload.single("file"), async (req, res) => {
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No file uploaded" });

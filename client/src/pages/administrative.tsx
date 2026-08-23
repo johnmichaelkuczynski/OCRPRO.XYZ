@@ -39,9 +39,9 @@ interface AdminVisitsResponse {
 }
 
 async function fetchAdminVisits(): Promise<AdminVisitsResponse> {
-  const res = await fetch("/api/admin/visits", { credentials: "include" });
+  const res = await fetch("/api/admin/visits");
   if (!res.ok) {
-    throw new Error(res.status === 403 ? "not_authorized" : "failed");
+    throw new Error("failed");
   }
   return res.json();
 }
@@ -96,17 +96,14 @@ export default function Administrative() {
   }
 
   if (error || !data) {
-    const notAuthorized = (error as Error)?.message === "not_authorized";
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-4">
         <ShieldAlert className="h-12 w-12 text-muted-foreground" />
         <h1 className="text-xl font-semibold" data-testid="text-admin-error">
-          {notAuthorized ? "Not authorized" : "Failed to load visitor data"}
+          Failed to load visitor data
         </h1>
         <p className="text-sm text-muted-foreground text-center">
-          {notAuthorized
-            ? "This page is only available to the site administrator."
-            : "Something went wrong loading the analytics."}
+          Something went wrong loading the analytics.
         </p>
         <Button asChild variant="outline" data-testid="button-back-home">
           <Link href="/">
@@ -130,7 +127,7 @@ export default function Administrative() {
             <Users className="h-6 w-6" />
             <div>
               <h1 className="text-lg font-semibold tracking-tight">Administrative</h1>
-              <p className="text-xs text-muted-foreground">Google login analytics</p>
+              <p className="text-xs text-muted-foreground">Visitor analytics</p>
             </div>
           </div>
           <Button asChild variant="outline" size="sm" data-testid="button-back">
@@ -144,7 +141,7 @@ export default function Administrative() {
 
       <main className="container mx-auto px-4 py-8 space-y-8">
         <section>
-          <h2 className="text-sm font-medium text-muted-foreground mb-3">Login counts</h2>
+          <h2 className="text-sm font-medium text-muted-foreground mb-3">Visitor counts</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <StatCard label="Last 24 hours" value={data.stats.last24Hours} testId="stat-day" />
             <StatCard label="Last week" value={lastWeekCount} testId="stat-week" />
@@ -164,7 +161,7 @@ export default function Administrative() {
 
         <section>
           <h2 className="text-sm font-medium text-muted-foreground mb-3">
-            Recent logins ({data.visits.length})
+            Recent visits ({data.visits.length})
           </h2>
           <Card>
             <CardContent className="p-0">
@@ -172,22 +169,22 @@ export default function Administrative() {
                 <table className="w-full text-sm">
                   <thead className="sticky top-0 bg-background border-b">
                     <tr className="text-left">
-                      <th className="px-4 py-3 font-medium">Email</th>
-                      <th className="px-4 py-3 font-medium">Logged in at</th>
+                      <th className="px-4 py-3 font-medium">Visitor</th>
+                      <th className="px-4 py-3 font-medium">Visited at</th>
                     </tr>
                   </thead>
                   <tbody>
                     {data.visits.length === 0 ? (
                       <tr>
                         <td colSpan={2} className="px-4 py-6 text-center text-muted-foreground">
-                          No logins recorded yet
+                          No visits recorded yet
                         </td>
                       </tr>
                     ) : (
                       data.visits.map((v) => (
                         <tr key={v.id} className="border-b last:border-0" data-testid={`row-visit-${v.id}`}>
                           <td className="px-4 py-2.5" data-testid={`text-visit-email-${v.id}`}>
-                            {v.email || "(no email)"}
+                            {v.email || "Anonymous visitor"}
                           </td>
                           <td className="px-4 py-2.5 text-muted-foreground">
                             {new Date(v.visitedAt).toLocaleString()}
