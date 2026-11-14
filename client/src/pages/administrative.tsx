@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ZhiBrand } from "@/components/zhi-brand";
 import { Loader2, ArrowLeft, Users, ShieldAlert } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -123,11 +124,14 @@ export default function Administrative() {
     <div className="min-h-screen bg-background">
       <header className="border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Users className="h-6 w-6" />
-            <div>
-              <h1 className="text-lg font-semibold tracking-tight">Administrative</h1>
-              <p className="text-xs text-muted-foreground">Visitor analytics</p>
+          <div className="flex items-center gap-4">
+            <ZhiBrand />
+            <div className="flex items-center gap-3 border-l pl-4">
+              <Users className="h-6 w-6" />
+              <div>
+                <h1 className="text-lg font-semibold tracking-tight">Administrative</h1>
+                <p className="text-xs text-muted-foreground">Visitor analytics</p>
+              </div>
             </div>
           </div>
           <Button asChild variant="outline" size="sm" data-testid="button-back">

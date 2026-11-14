@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "wouter";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ZhiBrand } from "@/components/zhi-brand";
 import { 
   Upload, 
   FileText, 
@@ -390,13 +391,11 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary">
-              <ScanText className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-lg font-semibold tracking-tight">Document Scanner</h1>
-              <p className="text-xs text-muted-foreground">OCR Text Extraction</p>
+          <div className="flex items-center gap-4">
+            <ZhiBrand />
+            <div className="border-l pl-4">
+                <h1 className="text-lg font-semibold tracking-tight">Document Scanner</h1>
+                <p className="text-xs text-muted-foreground">OCR Text Extraction</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
