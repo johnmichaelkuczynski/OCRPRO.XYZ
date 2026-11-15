@@ -43,9 +43,7 @@ Unlike generic OCR tools that try to do everything and fail on large or image-he
 
 - **Reset and Reuse** -- One-click reset clears the current document and result so you can immediately scan the next file without reloading the page.
 
-- **Google OAuth Login** -- Sign in with your Google account using passport-google-oauth20. No passwords to manage, no separate account to create.
-
-- **Stripe Payment Integration** -- $1 for 24-hour access to the OCR feature, handled through Stripe Checkout with webhook-verified payment confirmation. Access status is tracked per user in PostgreSQL.
+- **Visitor Analytics** -- Anonymous visits are recorded in PostgreSQL and summarized in the Administrative page.
 
 - **Dark and Light Mode** -- Full theme toggle with system preference detection and localStorage persistence.
 
@@ -61,6 +59,12 @@ Unlike generic OCR tools that try to do everything and fail on large or image-he
 
 - **It supports the full document lifecycle** -- Upload, extract, copy, download, and combine -- all in one interface. The combine tool accepts both .txt and .docx files in the same workflow, so you can merge mixed-format drafts without converting them separately first.
 
-- **It respects your time** -- No watermarks, no signup walls before you can see the tool, no upsell modals. Pay $1 once and you get 24 hours of unlimited scanning.
+- **It respects your time** -- No watermarks, signup walls, or upsell modals.
 
-- **It runs on your infrastructure** -- Built to use your own Neon PostgreSQL database, your own Google OAuth credentials, and your own Stripe account. You own the data, you control the billing, and you set the payment terms.
+- **It runs on your infrastructure** -- Configure your Neon PostgreSQL connection and optional Azure OCR credentials in the deployment environment.
+
+## Deploying with Coolify
+
+Build this repository with the root `Dockerfile`. The container listens on port `5000` on `0.0.0.0`; configure Coolify to route your domain through Traefik to that port. The official Node image supports `linux/arm64`.
+
+Set the required `DATABASE_URL` as a secret in Coolify. The Replit secret is not automatically transferred to Coolify. See [ENV_VARS.md](ENV_VARS.md) for the complete environment-variable list.

@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.cache
+.config
+.local
+.agents
+attached_assets
+.replit
+replit.md
+.env
+.env.*
+npm-debug.log*
