@@ -1,0 +1,1 @@
+- [External Neon database](external-neon-database.md) — Keep the app on the user's Neon PostgreSQL and preserve pre-existing tables when applying schema changes.
